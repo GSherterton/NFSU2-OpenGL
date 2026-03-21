@@ -2,10 +2,12 @@
 #include <stdlib.h>
 
 #include "Camera.h"
+#include "Car.h"
 
 using namespace std;
 
 Camera camera(0, 0, 5);
+Car carro;
 
 void init(){
   glClearColor (0.0, 0.0, 0.0, 0.0);
@@ -20,7 +22,8 @@ void display(){
   glLoadIdentity();
   camera.setLookAt();
 
-  glutWireCube (1.0); // só um exemplo
+  carro.drawCar();
+  // glutWireCube (1.0); // só um exemplo
 
   glutSwapBuffers();
 }
