@@ -1,19 +1,29 @@
+/*
+ * Also the cameras moves with w, a, s, d, space and z keys.
+ */
+
 #include <GL/glut.h>
 #include <stdlib.h>
 
 #include "Camera.h"
 #include "Car.h"
 
+#define PI 3.14159265
+#define THETA 20.0
+#define STEP 1.0
+
 using namespace std;
 
-Camera camera(0, 0, 5);
+// Camera camera(-10, 5, 5);
+Camera camera(5, 0, 0);
 Car carro;
 
 void init(){
-  glClearColor (0.0, 0.0, 0.0, 0.0);
+  glClearColor (1.0, 1.0, 1.0, 0.0);
   glShadeModel (GL_SMOOTH); // select gouraud shading
 
   glEnable(GL_DEPTH_TEST); // enable depth test
+  glEnable(GL_MAP1_VERTEX_3);
 }
 
 void display(){
@@ -41,6 +51,41 @@ void reshape(int w, int h){
 void keyboard(unsigned char key, int x, int y){
   if(key == 27 /* ESC */){
     exit(0);
+  }else{
+    // manipulate camera
+    {
+      GLdouble x = camera.posicao[0], y = camera.posicao[2];
+
+      if(key == 'w'){ // closer
+        camera.posicao[0] = x - (STEP * (x / (sqrt(x*x + y*y))));
+        camera.posicao[2] = y - (STEP * (y / (sqrt(x*x + y*y))));
+      }
+
+      if(key == 's'){ // further
+        camera.posicao[0] = x + (STEP * (x / (sqrt(x*x + y*y))));
+        camera.posicao[2] = y + (STEP * (y / (sqrt(x*x + y*y))));
+      }
+
+      if(key == 'a'){ // rotate left
+        camera.posicao[0] = x * cos(THETA*PI/180) - y * sin(THETA*PI/180);
+        camera.posicao[2] = x * sin(THETA*PI/180) + y * cos(THETA*PI/180);
+      }
+
+      if(key == 'd'){ // rotate right
+        camera.posicao[0] = x * cos(-THETA*PI/180) - y * sin(-THETA*PI/180);
+        camera.posicao[2] = x * sin(-THETA*PI/180) + y * cos(-THETA*PI/180);
+      }
+
+      if(key == ' '){ // up
+        camera.posicao[1] += 1;
+      }
+
+      if(key == 'z'){ // down
+        camera.posicao[1] -= 1;
+      }
+    }
+  
+    glutPostRedisplay();
   }
 }
 
