@@ -23,6 +23,7 @@ endif
 sources = [
   'main.cpp',
   'Camera.cpp',
+  'Garagem.cpp',
 ]
 
 # Executable
