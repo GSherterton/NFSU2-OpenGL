@@ -2,12 +2,12 @@
 
 #include <GL/glut.h>
 
-class Textura {
+class Texture {
     public:
         GLuint m_id;
 
-        Textura(const char* caminho);
-        ~Textura();
+        Texture(const char* path);
+        ~Texture();
 
         void bind() const;
         void unbind() const;
