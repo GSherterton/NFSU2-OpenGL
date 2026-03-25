@@ -1,0 +1,50 @@
+---
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++17
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+
+# Braces
+BreakBeforeBraces: Attach
+
+# Constructor initializer lists  ": member(val), ..." on new line
+BreakConstructorInitializers: BeforeColon
+
+# Pointers and references attached to the type: "int* p", "int& r"
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Spaces
+SpaceAfterCStyleCast: false
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyBlock: false
+
+# Short functions: allow "Foo::~Foo() {}" on one line
+AllowShortFunctionsOnASingleLine: Empty
+
+# Alignment
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 0
+
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+
+# Do not enforce a column limit — long lines inside glBegin/glEnd blocks
+# are intentionally kept on one line for readability
+ColumnLimit: 0
+
+# Includes: preserve manual grouping (system vs local)
+SortIncludes: false
+IncludeBlocks: Preserve
+
+# Blank lines
+MaxEmptyLinesToKeep: 2

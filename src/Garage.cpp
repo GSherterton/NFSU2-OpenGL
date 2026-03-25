@@ -2,8 +2,10 @@
 #include "Garage.h"
 #include "Texture.h"
 
+// clang-format off
 #define DARK_GRAY    0.25f, 0.25f, 0.25f
 #define BLUISH_GRAY  0.20f, 0.20f, 0.22f
+// clang-format on
 
 void Garage::loadTextures(const char* wallPath, const char* floorPath, const char* ceilingPath) {
     delete m_wallTex;
@@ -22,12 +24,14 @@ void Garage::drawFloor() {
         m_floorTex->bind();
     }
     glColor3f(1.0f, 1.0f, 1.0f);
+    // clang-format off
     glBegin(GL_QUADS);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, 0.0f,  m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, 0.0f,  m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, 0.0f, -m_depth);
         glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_width, 0.0f, -m_depth);
     glEnd();
+    // clang-format on
     if (hasTexture) {
         m_floorTex->unbind();
         glDisable(GL_TEXTURE_2D);
@@ -41,12 +45,14 @@ void Garage::drawCeiling() {
         m_ceilingTex->bind();
     }
     glColor3f(1.0f, 1.0f, 1.0f);
+    // clang-format off
     glBegin(GL_QUADS);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, m_height,  m_depth);
         glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_width, m_height, -m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, m_height, -m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, m_height,  m_depth);
     glEnd();
+    // clang-format on
     if (hasTexture) {
         m_ceilingTex->unbind();
         glDisable(GL_TEXTURE_2D);
@@ -60,12 +66,14 @@ void Garage::drawBackWall() {
         m_wallTex->bind();
     }
     glColor3f(1.0f, 1.0f, 1.0f);
+    // clang-format off
     glBegin(GL_QUADS);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, 0.0f,      -m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, 0.0f,      -m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, m_height,  -m_depth);
         glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_width, m_height,  -m_depth);
     glEnd();
+    // clang-format on
     if (hasTexture) {
         m_wallTex->unbind();
         glDisable(GL_TEXTURE_2D);
@@ -79,12 +87,14 @@ void Garage::drawLeftWall() {
         m_wallTex->bind();
     }
     glColor3f(1.0f, 1.0f, 1.0f);
+    // clang-format off
     glBegin(GL_QUADS);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, 0.0f,      m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f(-m_width, 0.0f,     -m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f(-m_width, m_height, -m_depth);
         glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_width, m_height,  m_depth);
     glEnd();
+    // clang-format on
     if (hasTexture) {
         m_wallTex->unbind();
         glDisable(GL_TEXTURE_2D);
@@ -98,12 +108,14 @@ void Garage::drawRightWall() {
         m_wallTex->bind();
     }
     glColor3f(1.0f, 1.0f, 1.0f);
+    // clang-format off
     glBegin(GL_QUADS);
         glTexCoord2f(0.0f, 0.0f); glVertex3f( m_width, 0.0f,      -m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, 0.0f,       m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, m_height,   m_depth);
         glTexCoord2f(0.0f, 1.0f); glVertex3f( m_width, m_height,  -m_depth);
     glEnd();
+    // clang-format on
     if (hasTexture) {
         m_wallTex->unbind();
         glDisable(GL_TEXTURE_2D);
@@ -116,6 +128,7 @@ void Garage::drawPillars() {
 
     glColor3f(0.35f, 0.35f, 0.38f);
 
+    // clang-format off
     // Left pillar
     glPushMatrix();
         glTranslatef(-m_width + pillarWidth * 0.5f, m_height * 0.5f, m_depth - pillarDepth * 0.5f);
@@ -137,9 +150,11 @@ void Garage::drawPillars() {
         glScalef(m_width * 2.0f, 0.2f, pillarDepth);
         glutSolidCube(1.0);
     glPopMatrix();
+    // clang-format on
 }
 
 void Garage::draw() {
+    // clang-format off
     glPushMatrix();
         drawFloor();
         drawCeiling();
@@ -148,4 +163,5 @@ void Garage::draw() {
         drawRightWall();
         drawPillars();
     glPopMatrix();
+    // clang-format on
 }

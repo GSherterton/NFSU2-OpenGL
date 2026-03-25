@@ -3,8 +3,8 @@
 
 class Camera {
   public:
-    GLdouble position[3]; // x, y, z
-    GLdouble target[3];   // x, y, z
+    GLdouble m_position[3]; // x, y, z
+    GLdouble m_target[3];   // x, y, z
 
     Camera();
     Camera(const GLdouble x, const GLdouble y, const GLdouble z);

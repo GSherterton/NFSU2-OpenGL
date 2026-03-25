@@ -5,7 +5,8 @@
 #include "stb_image.h"
 #include "Texture.h"
 
-Texture::Texture(const char* path) : m_id(0) {
+Texture::Texture(const char* path)
+    : m_id(0) {
     int width, height, channels;
     stbi_set_flip_vertically_on_load(1);
     unsigned char* data = stbi_load(path, &width, &height, &channels, 0);
