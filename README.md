@@ -3,7 +3,7 @@
 Garagem do Need For Speed Underground 2 com OpenGL e GLUT.
 
 <p align="center">
-  <img src="docs/garagem1.png" width="45%" alt="Garagem NFSU2 - Visão geral">
+  <img src="docs/garagem4.png" width="45%" alt="Garagem NFSU2 - Visão geral">
 </p>
 <p align="center"><em>Garagem NFSU2 - Visão geral</em></p>
 
@@ -46,11 +46,12 @@ meson compile -C build
 
 - [X] Adicionar estrutura para o meson
 - [X] Implementar garagem básica
-- [x] Aplicação inicial de Texturas com stb_image
+- [X] Aplicação inicial de Texturas com stb_image
 - [ ] Adicionar modo de build_debug onde é possível mover a câmera
 - [ ] No geral, Adicionar elementos de cada atividade prática
 - [ ] Carro simplificado
 - [ ] Iluminação
-- [ ] Textura dedicada para o chão
-- [ ] Textura dedicada para o teto
+- [X] Textura dedicada para o chão
+- [X] Textura dedicada para o teto
 - [ ] Plataforma circular giratória no centro da garagem
+- [ ] Implementar bump mapping para as paredes

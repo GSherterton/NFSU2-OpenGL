@@ -15,7 +15,7 @@ void init(){
 
   glEnable(GL_DEPTH_TEST); // enable depth test
 
-  garagem.carregarTexturas("textures/parede.jpg");
+  garagem.carregarTexturas("textures/parede.jpg", "textures/chao.jpg", "textures/teto.jpg");
 }
 
 void display(){

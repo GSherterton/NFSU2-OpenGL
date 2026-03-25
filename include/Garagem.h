@@ -10,9 +10,9 @@ class Garagem {
         const GLfloat m_altura;
 
         Garagem(GLfloat larg, GLfloat prof, GLfloat altura)
-            : m_larg(larg), m_prof(prof), m_altura(altura), m_texParede(nullptr) {}
+            : m_larg(larg), m_prof(prof), m_altura(altura), m_texParede(nullptr), m_texChao(nullptr), m_texTeto(nullptr) {}
 
-        void carregarTexturas(const char* caminhoParede);
+        void carregarTexturas(const char* caminhoParede, const char* caminhoChao, const char* caminhoTeto);
 
         void desenhar();
         void desenharChao();
@@ -24,4 +24,6 @@ class Garagem {
 
     private:
         Textura* m_texParede;
+        Textura* m_texChao;
+        Textura* m_texTeto;
 };
