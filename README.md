@@ -46,5 +46,11 @@ meson compile -C build
 
 - [X] Adicionar estrutura para o meson
 - [X] Implementar garagem básica
+- [x] Aplicação inicial de Texturas com stb_image
 - [ ] Adicionar modo de build_debug onde é possível mover a câmera
 - [ ] No geral, Adicionar elementos de cada atividade prática
+- [ ] Carro simplificado
+- [ ] Iluminação
+- [ ] Textura dedicada para o chão
+- [ ] Textura dedicada para o teto
+- [ ] Plataforma circular giratória no centro da garagem
