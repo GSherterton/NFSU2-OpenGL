@@ -1,8 +1,14 @@
 #include <GL/glut.h>
 #include "Garagem.h"
+#include "Textura.h"
 
 #define CINZA_ESCURO 0.25f, 0.25f, 0.25f
 #define CINZA_AZULADO 0.20f, 0.20f, 0.22f
+
+void Garagem::carregarTexturas(const char* caminhoParede) {
+    delete m_texParede;
+    m_texParede = new Textura(caminhoParede);
+}
 
 
 void Garagem::desenharChao() {
@@ -26,33 +32,60 @@ void Garagem::desenharTeto() {
 }
 
 void Garagem::desenharParedeFundos() {
-    glColor3f(0.30f, 0.30f, 0.32f);
+    bool comTextura = (m_texParede != nullptr && m_texParede->m_id != 0);
+    if (comTextura) {
+        glEnable(GL_TEXTURE_2D);
+        m_texParede->bind();
+    }
+    glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
-        glVertex3f(-m_larg, 0.0f,  -m_prof);
-        glVertex3f( m_larg, 0.0f,  -m_prof);
-        glVertex3f( m_larg, m_altura, -m_prof);
-        glVertex3f(-m_larg, m_altura, -m_prof);
+        glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_larg, 0.0f,     -m_prof);
+        glTexCoord2f(1.0f, 0.0f); glVertex3f( m_larg, 0.0f,     -m_prof);
+        glTexCoord2f(1.0f, 1.0f); glVertex3f( m_larg, m_altura, -m_prof);
+        glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_larg, m_altura, -m_prof);
     glEnd();
+    if (comTextura) {
+        m_texParede->unbind();
+        glDisable(GL_TEXTURE_2D);
+    }
 }
 
 void Garagem::desenharParedeEsquerda() {
-    glColor3f(0.28f, 0.28f, 0.30f);
+    bool comTextura = (m_texParede != nullptr && m_texParede->m_id != 0);
+    if (comTextura) {
+        glEnable(GL_TEXTURE_2D);
+        m_texParede->bind();
+    }
+    glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
-        glVertex3f(-m_larg, 0.0f,   m_prof);
-        glVertex3f(-m_larg, 0.0f,  -m_prof);
-        glVertex3f(-m_larg, m_altura, -m_prof);
-        glVertex3f(-m_larg, m_altura,  m_prof);
+        glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_larg, 0.0f,      m_prof);
+        glTexCoord2f(1.0f, 0.0f); glVertex3f(-m_larg, 0.0f,     -m_prof);
+        glTexCoord2f(1.0f, 1.0f); glVertex3f(-m_larg, m_altura, -m_prof);
+        glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_larg, m_altura,  m_prof);
     glEnd();
+    if (comTextura) {
+        m_texParede->unbind();
+        glDisable(GL_TEXTURE_2D);
+    }
 }
 
 void Garagem::desenharParedeDireita() {
-    glColor3f(0.28f, 0.28f, 0.30f);
+    bool comTextura = (m_texParede != nullptr && m_texParede->m_id != 0);
+    if (comTextura) {
+        glEnable(GL_TEXTURE_2D);
+        m_texParede->bind();
+    }
+    glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_QUADS);
-        glVertex3f( m_larg, 0.0f,  -m_prof);
-        glVertex3f( m_larg, 0.0f,   m_prof);
-        glVertex3f( m_larg, m_altura,  m_prof);
-        glVertex3f( m_larg, m_altura, -m_prof);
+        glTexCoord2f(0.0f, 0.0f); glVertex3f( m_larg, 0.0f,     -m_prof);
+        glTexCoord2f(1.0f, 0.0f); glVertex3f( m_larg, 0.0f,      m_prof);
+        glTexCoord2f(1.0f, 1.0f); glVertex3f( m_larg, m_altura,  m_prof);
+        glTexCoord2f(0.0f, 1.0f); glVertex3f( m_larg, m_altura, -m_prof);
     glEnd();
+    if (comTextura) {
+        m_texParede->unbind();
+        glDisable(GL_TEXTURE_2D);
+    }
 }
 
 void Garagem::desenharPilares() {

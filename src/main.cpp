@@ -14,6 +14,8 @@ void init(){
   glShadeModel (GL_SMOOTH); // select gouraud shading
 
   glEnable(GL_DEPTH_TEST); // enable depth test
+
+  garagem.carregarTexturas("textures/parede.jpg");
 }
 
 void display(){
