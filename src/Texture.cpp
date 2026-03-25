@@ -3,19 +3,20 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-#include "Textura.h"
+#include "Texture.h"
 
-Textura::Textura(const char* caminho) : m_id(0) {
-    int largura, altura, canais;
+Texture::Texture(const char* path)
+    : m_id(0) {
+    int width, height, channels;
     stbi_set_flip_vertically_on_load(1);
-    unsigned char* dados = stbi_load(caminho, &largura, &altura, &canais, 0);
+    unsigned char* data = stbi_load(path, &width, &height, &channels, 0);
 
-    if (!dados) {
-        fprintf(stderr, "Textura: erro ao carregar '%s': %s\n", caminho, stbi_failure_reason());
+    if (!data) {
+        fprintf(stderr, "Texture: failed to load '%s': %s\n", path, stbi_failure_reason());
         return;
     }
 
-    GLenum formato = (canais == 4) ? GL_RGBA : GL_RGB;
+    GLenum format = (channels == 4) ? GL_RGBA : GL_RGB;
 
     glGenTextures(1, &m_id);
     glBindTexture(GL_TEXTURE_2D, m_id);
@@ -25,22 +26,22 @@ Textura::Textura(const char* caminho) : m_id(0) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, formato, largura, altura, 0, formato, GL_UNSIGNED_BYTE, dados);
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 
-    stbi_image_free(dados);
+    stbi_image_free(data);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Textura::~Textura() {
+Texture::~Texture() {
     if (m_id != 0) {
         glDeleteTextures(1, &m_id);
     }
 }
 
-void Textura::bind() const {
+void Texture::bind() const {
     glBindTexture(GL_TEXTURE_2D, m_id);
 }
 
-void Textura::unbind() const {
+void Texture::unbind() const {
     glBindTexture(GL_TEXTURE_2D, 0);
 }

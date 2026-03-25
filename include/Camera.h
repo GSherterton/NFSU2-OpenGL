@@ -1,19 +1,17 @@
 #pragma once
 #include <GL/glut.h>
 
-using namespace std;
-
-class Camera{
+class Camera {
   public:
-    GLdouble posicao[3]; // x, y, z
-    GLdouble direcao[3]; // x, y, z
+    GLdouble m_position[3]; // x, y, z
+    GLdouble m_target[3];   // x, y, z
 
     Camera();
     Camera(const GLdouble x, const GLdouble y, const GLdouble z);
     ~Camera();
 
-    void setPosicao(const GLdouble x, const GLdouble y, const GLdouble z);
-    void setDirecao(const GLdouble x, const GLdouble y, const GLdouble z);
+    void setPosition(const GLdouble x, const GLdouble y, const GLdouble z);
+    void setTarget(const GLdouble x, const GLdouble y, const GLdouble z);
 
     void setLookAt();
 };

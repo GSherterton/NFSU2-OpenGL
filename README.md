@@ -1,20 +1,19 @@
 # NFSU2-OpenGL
 
-Garagem do Need For Speed Underground 2 com OpenGL e GLUT.
+Need For Speed Underground 2 garage recreation with OpenGL and GLUT.
 
 <p align="center">
-  <img src="docs/garagem4.png" width="45%" alt="Garagem NFSU2 - Visão geral">
+  <img src="docs/garagem4.png" width="45%" alt="NFSU2 Garage - Overview">
 </p>
-<p align="center"><em>Garagem NFSU2 - Visão geral</em></p>
+<p align="center"><em>NFSU2 Garage - Overview</em></p>
 
-## Dependências
+## Dependencies
 
+- [g++](https://gcc.gnu.org/) (C++17 compiler)
+- [Meson](https://mesonbuild.com/) (build system)
+- [freeglut](http://freeglut.sourceforge.net/) (OpenGL, GLU and GLUT)
 
-- [g++](https://gcc.gnu.org/) (Compilador para C++17)
-- [Meson](https://mesonbuild.com/) (Sistema de build)
-- [freeglut](http://freeglut.sourceforge.net/) (OpenGL, GLU e GLUT)
-
-## Instalação
+## Installation
 
 ### Linux
 
@@ -22,7 +21,7 @@ Garagem do Need For Speed Underground 2 com OpenGL e GLUT.
 sudo apt install meson build-essential libgl-dev libglu-dev freeglut3-dev
 ```
 
-## Compilar e executar
+## Build and run
 
 ```bash
 meson setup build
@@ -30,28 +29,28 @@ meson compile -C build
 ./build/src/nfsu2-opengl
 ```
 
-Para recompilar após mudanças:
+To recompile after changes:
 
 ```bash
 meson compile -C build
 ```
 
-## Controles
+## Controls
 
-| Tecla | Ação         |
-|-------|--------------|
-| ESC   | Encerrar     |
+| Key | Action |
+|-----|--------|
+| ESC | Quit   |
 
 ## Todo
 
-- [X] Adicionar estrutura para o meson
-- [X] Implementar garagem básica
-- [X] Aplicação inicial de Texturas com stb_image
-- [ ] Adicionar modo de build_debug onde é possível mover a câmera
-- [ ] No geral, Adicionar elementos de cada atividade prática
-- [ ] Carro simplificado
-- [ ] Iluminação
-- [X] Textura dedicada para o chão
-- [X] Textura dedicada para o teto
-- [ ] Plataforma circular giratória no centro da garagem
-- [ ] Implementar bump mapping para as paredes
+- [X] Meson build structure
+- [X] Basic garage implementation
+- [X] Initial texture support with stb_image
+- [ ] Debug build mode with free camera movement
+- [ ] Add elements from each practical activity
+- [ ] Simplified car
+- [ ] Lighting
+- [X] Dedicated floor texture
+- [X] Dedicated ceiling texture
+- [ ] Rotating circular platform in the center of the garage
+- [ ] Implement bump mapping for the walls
