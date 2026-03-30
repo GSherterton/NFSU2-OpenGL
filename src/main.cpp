@@ -4,10 +4,16 @@
 #include "Camera.h"
 #include "Garage.h"
 #include "Platform.h"
+#include "Poster.h"
+#include "Shelf.h"
 
 Camera camera(0, 2.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
 Platform platform(3.0f, 0.2f);
+Shelf shelf(-4.5f, 0.0f, -4.97f, 1.2f, 2.5f, 0.5f);
+Poster poster1(0.2f, 1.0f, -4.99f, 1.4f, 2.1f);
+Poster poster2(1.7f, 1.0f, -4.99f, 1.4f, 2.1f);
+Poster poster3(3.2f, 1.0f, -4.99f, 1.4f, 2.1f);
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
@@ -20,6 +26,9 @@ void init() {
 
     garage.loadTextures("textures/wall.jpg", "textures/floor.jpg", "textures/ceiling.jpg");
     platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side.jpg");
+    poster1.loadTexture("textures/poster1.jpg");
+    poster2.loadTexture("textures/poster2.jpg");
+    poster3.loadTexture("textures/poster3.jpg");
 }
 
 void display() {
@@ -31,6 +40,10 @@ void display() {
 
     garage.draw();
     platform.draw();
+    shelf.draw();
+    poster1.draw();
+    poster2.draw();
+    poster3.draw();
 
     glutSwapBuffers();
 }
