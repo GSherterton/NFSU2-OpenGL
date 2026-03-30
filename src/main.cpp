@@ -7,7 +7,7 @@
 
 Camera camera(0, 2.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
-Platform platform(3.0f, 0.05f);
+Platform platform(3.0f, 0.2f);
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
@@ -19,6 +19,7 @@ void init() {
     glEnable(GL_DEPTH_TEST); // enable depth test
 
     garage.loadTextures("textures/wall.jpg", "textures/floor.jpg", "textures/ceiling.jpg");
+    platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side.jpg");
 }
 
 void display() {

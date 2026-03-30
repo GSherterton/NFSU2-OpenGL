@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/glut.h>
+#include "Texture.h"
 
 class Platform {
   public:
@@ -12,8 +13,12 @@ class Platform {
 
     void draw();
     void addRotation(float delta);
+    void loadTextures(const char* discPath, const char* sidePath);
 
   private:
     void drawDisc(GLfloat y);
     void drawSide();
+
+    Texture* m_discTex;
+    Texture* m_sideTex;
 };
