@@ -3,9 +3,14 @@
 
 #include "Camera.h"
 #include "Garage.h"
+#include "Platform.h"
 
 Camera camera(0, 2.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
+Platform platform(3.0f, 0.05f);
+
+bool mouseLeftDown = false;
+int lastMouseX = 0;
 
 void init() {
     glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -24,6 +29,7 @@ void display() {
     camera.setLookAt();
 
     garage.draw();
+    platform.draw();
 
     glutSwapBuffers();
 }
@@ -44,6 +50,22 @@ void keyboard(unsigned char key, int x, int y) {
     }
 }
 
+void mouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON) {
+        mouseLeftDown = (state == GLUT_DOWN);
+        lastMouseX = x;
+    }
+}
+
+void motion(int x, int y) {
+    if (mouseLeftDown) {
+        int dx = x - lastMouseX;
+        lastMouseX = x;
+        platform.addRotation(dx * 0.5f);
+        glutPostRedisplay();
+    }
+}
+
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -56,6 +78,8 @@ int main(int argc, char** argv) {
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
+    glutMouseFunc(mouse);
+    glutMotionFunc(motion);
     glutMainLoop();
 
     return 0;

@@ -15,6 +15,8 @@ class Garage {
     void loadTextures(const char* wallPath, const char* floorPath, const char* ceilingPath);
 
     void draw();
+  
+  private:
     void drawFloor();
     void drawCeiling();
     void drawBackWall();
@@ -22,7 +24,6 @@ class Garage {
     void drawRightWall();
     void drawPillars();
 
-  private:
     Texture* m_wallTex;
     Texture* m_floorTex;
     Texture* m_ceilingTex;
