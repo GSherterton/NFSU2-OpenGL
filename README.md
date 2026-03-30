@@ -3,7 +3,7 @@
 Need For Speed Underground 2 garage recreation with OpenGL and GLUT.
 
 <p align="center">
-  <img src="docs/garagem4.png" width="45%" alt="NFSU2 Garage - Overview">
+  <img src="docs/garage5.png" width="45%" alt="NFSU2 Garage - Overview">
 </p>
 <p align="center"><em>NFSU2 Garage - Overview</em></p>
 
@@ -40,17 +40,19 @@ meson compile -C build
 | Key | Action |
 |-----|--------|
 | ESC | Quit   |
+| Left mouse drag | Rotate platform |
 
 ## Todo
 
 - [X] Meson build structure
 - [X] Basic garage implementation
 - [X] Initial texture support with stb_image
+- [X] Dedicated floor texture
+- [X] Dedicated ceiling texture
+- [X] Rotating circular platform in the center of the garage
+- [ ] Find better textures
 - [ ] Debug build mode with free camera movement
 - [ ] Add elements from each practical activity
 - [ ] Simplified car
 - [ ] Lighting
-- [X] Dedicated floor texture
-- [X] Dedicated ceiling texture
-- [ ] Rotating circular platform in the center of the garage
 - [ ] Implement bump mapping for the walls
