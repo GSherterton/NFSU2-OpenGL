@@ -25,6 +25,8 @@ sources = [
   'Camera.cpp',
   'Garage.cpp',
   'Platform.cpp',
+  'Poster.cpp',
+  'Shelf.cpp',
   'Texture.cpp',
 ]
 
