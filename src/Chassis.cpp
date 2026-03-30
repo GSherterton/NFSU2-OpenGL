@@ -5,18 +5,6 @@ Chassis::Chassis(){}
 Chassis::~Chassis(){}
 
 void Chassis::drawChassis(){
-  GLfloat back_axle_shift = 2.0; // the shift of the rear axle
-  GLfloat front_axle_shift = 2.0; // the shift of the front axle
-  GLfloat side_shift = 1.5 + 0.7/2; // the shift of the side of the car
-  GLfloat up_shift = 0.7;  // the shift of the radius of the tires
-  GLfloat tire_radius = 0.7; // the radius of the tires
-  GLfloat fender_shift = 0.1; // the shift of the fenders
-  GLfloat rear_bumper_shift = 0.7; // the shift of the rear bumper
-  GLfloat front_bumper_shift = 0.7; // the shift of the front bumper
-  GLfloat car_hood = up_shift + 1.5; // the height of the car hood
-  GLfloat car_roof = up_shift + 2.5; // the height of the car roof
-  GLfloat windshield_shift = 0.5; // the shift of the windshield
-
   // glPointSize(4.0);
   glLineWidth(4.0); // line width
   glColor3ubv (car_color); // paints the car
@@ -31,22 +19,22 @@ void Chassis::drawChassis(){
       {-back_axle_shift-(tire_radius+fender_shift), up_shift                                         , -side_shift},
     }},
     {{ // rear bumper
-      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift                       , -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift                       , -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, -side_shift},
     }},
     {{ // rear bumper
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift,  side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift,  side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift,  side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift,  side_shift},
     }},
     {{ // rear bumper
-      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift                       , side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , up_shift                       , side_shift},
     }},
     {{ // rear right fender
       {-back_axle_shift-(tire_radius+fender_shift), up_shift                                         , side_shift},
@@ -111,33 +99,33 @@ void Chassis::drawChassis(){
   vector<array<array<GLfloat, 3>, 4>> up_ctrlpoints = {
     {{ // rear left chassis top
       {-back_axle_shift+(tire_radius)             , car_roof, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift), car_hood, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift), car_rear_bumper, -side_shift},
       {-back_axle_shift+(tire_radius)             , car_roof, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift), car_hood, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift), car_rear_bumper, -side_shift},
     }},
     {{ // trunk
-      {-back_axle_shift-(tire_radius+fender_shift)                  , car_hood, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift)                  , car_hood, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , car_rear_bumper, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , car_rear_bumper, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
     }},
     {{ // trunk
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood,  side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood,  side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper,  side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper,  side_shift},
     }},
     {{ // trunk
-      {-back_axle_shift-(tire_radius+fender_shift)                  , car_hood, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift)                  , car_hood, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , car_rear_bumper, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift)                  , car_rear_bumper, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
     }},
     {{ // rear right chassis top
-      {-back_axle_shift-(tire_radius+fender_shift), car_hood, side_shift},
-      {-back_axle_shift+(tire_radius)             , car_roof, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift), car_hood, side_shift},
-      {-back_axle_shift+(tire_radius)             , car_roof, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift), car_rear_bumper, side_shift},
+      {-back_axle_shift+(tire_radius)             , car_roof  , side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift), car_rear_bumper, side_shift},
+      {-back_axle_shift+(tire_radius)             , car_roof  , side_shift},
     }},
     {{ // right side chassis top
       {-back_axle_shift+(tire_radius), car_roof, side_shift},
@@ -153,20 +141,20 @@ void Chassis::drawChassis(){
     }},
     {{ // hood
       {front_axle_shift-(tire_radius+fender_shift)                   , car_hood, side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, side_shift},
       {front_axle_shift-(tire_radius+fender_shift)                   , car_hood, side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, side_shift},
     }},
     {{ // hood
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood,  side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, -side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood,  side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, -side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper,  side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, -side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper,  side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, -side_shift},
     }},
     {{ // hood
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, -side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, -side_shift},
       {front_axle_shift-(tire_radius+fender_shift)                   , car_hood, -side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, -side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, -side_shift},
       {front_axle_shift-(tire_radius+fender_shift)                   , car_hood, -side_shift},
     }},
     {{ // front left chassis top
@@ -195,16 +183,16 @@ void Chassis::drawChassis(){
   // define the points of the linkin splines
   vector<array<array<GLfloat, 3>, 4>> link_ctrlpoints = {
     {{ // down - up trunk
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, -side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper                       , -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, -side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper                       , -side_shift},
     }},
     {{ // down - up trunk
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift, side_shift},
-      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_hood, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper                       , side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), up_shift+bumper_elevation_shift, side_shift},
+      {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper                       , side_shift},
     }},
     {{ // rear chassis top
       {-back_axle_shift+(tire_radius), car_roof, side_shift},
@@ -226,15 +214,15 @@ void Chassis::drawChassis(){
     }},
     {{ // down - up hood
       {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), up_shift, side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, side_shift},
       {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), up_shift, side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, side_shift},
     }},
     {{ // down - up hood
       {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), up_shift, -side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, -side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, -side_shift},
       {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), up_shift, -side_shift},
-      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_hood, -side_shift},
+      {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper, -side_shift},
     }},
   };
 
@@ -246,41 +234,4 @@ void Chassis::drawChassis(){
           glEvalCoord1f((GLfloat) float(j)/RESOLUTION);
     glEnd();
   }
-
-  // glBegin(GL_LINE_LOOP);{
-  //   glVertex3f (0, up_shift, -side_shift);
-  //   glVertex3f (back_shift+0.7+0.1, up_shift, -side_shift);
-  //   // glVertex3f (back_shift+0.7+0.1, up_shift+0.7, -side_shift);
-  //   glVertex3f (back_shift, up_shift+0.7+0.1, -side_shift);
-  //   // glVertex3f (back_shift-0.7-0.1, up_shift+0.7, -side_shift);
-  //   glVertex3f (back_shift-0.7-0.1, up_shift, -side_shift);
-  //   glVertex3f (back_shift-0.7-0.1-0.5, up_shift, -side_shift);
-
-  //   // other side
-  //   glVertex3f (back_shift-0.7-0.1-0.5, up_shift, side_shift);
-  //   glVertex3f (back_shift-0.7-0.1, up_shift, side_shift);
-  //   // glVertex3f (back_shift-0.7-0.1, up_shift+0.7, side_shift);
-  //   glVertex3f (back_shift, up_shift+0.7+0.1, side_shift);
-  //   // glVertex3f (back_shift+0.7+0.1, up_shift+0.7, side_shift);
-  //   glVertex3f (back_shift+0.7+0.1, up_shift, side_shift);
-  //   glVertex3f (0, up_shift, side_shift);
-
-  //   // front
-  //   glVertex3f (front_shift-0.7-0.1, up_shift, side_shift);
-  //   // glVertex3f (front_shift-0.7-0.1, up_shift+0.7, side_shift);
-  //   glVertex3f (front_shift, up_shift+0.7+0.1, side_shift);
-  //   // glVertex3f (front_shift+0.7+0.1, up_shift+0.7, side_shift);
-  //   glVertex3f (front_shift+0.7+0.1, up_shift, side_shift);
-  //   glVertex3f (front_shift+0.7+0.1+0.5, up_shift, side_shift);
-
-  //   //other side
-  //   glVertex3f (front_shift+0.7+0.1+0.5, up_shift, -side_shift);
-  //   glVertex3f (front_shift+0.7+0.1, up_shift, -side_shift);
-  //   // glVertex3f (front_shift+0.7+0.1, up_shift+0.7, -side_shift);
-  //   glVertex3f (front_shift, up_shift+0.7+0.1, -side_shift);
-  //   // glVertex3f (front_shift-0.7-0.1, up_shift+0  .7, -side_shift);
-  //   glVertex3f (front_shift-0.7-0.1, up_shift, -side_shift);
-
-  // }glEnd();
-
 }

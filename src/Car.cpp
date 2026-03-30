@@ -1,16 +1,116 @@
 #include "Car.h"
 
-Car::Car(){}
+void Car::setParameters(){
+  { // set chassis vars
+    // left - right horizontal shifts
+    chassis.side_shift = side_shift; // the shift of the side of the car
+
+    // spec shifts
+    chassis.tire_radius = tire_radius; // the radius of the tires
+    chassis.fender_shift = fender_shift; // the shift of the fenders
+
+    // back - front horizontal shifts
+    chassis.back_axle_shift    = back_axle_shift; // the shift of the rear axle  
+    chassis.front_axle_shift   = front_axle_shift; // the shift of the front axle
+    chassis.rear_bumper_shift  = rear_bumper_shift; // the shift of the rear bumper
+    chassis.front_bumper_shift = front_bumper_shift; // the shift of the front bumper
+    chassis.windshield_shift   = windshield_shift; // the shift of the windshield
+    
+    // vertical up shifts
+    chassis.up_shift = up_shift;  // the shift of the radius of the tires
+    chassis.car_hood         = car_hood;  // the height of the car hood
+    chassis.car_front_bumper = car_front_bumper; // the height of the car bumpers
+    chassis.car_rear_bumper  = car_rear_bumper;  // the height of the car bumpers
+    chassis.car_roof   = car_roof;  // the height of the car roof
+    chassis.bumper_elevation_shift = bumper_elevation_shift; // the elevation shift of the bumpers
+  }
+
+  { // set doors vars
+    { // left door
+      // spec shifts
+      doorL.tire_radius = tire_radius; // the radius of the tires
+      doorL.fender_shift = fender_shift; // the shift of the fenders
+
+      // back - front horizontal shifts
+      doorL.back_line_shift = back_line_shift; // the back of the door shift from the center of the car
+      doorL.front_axle_shift = front_axle_shift; // the shift of the front axle
+      doorL.windshield_shift = windshield_shift; // the shift of the windshield
+      
+      // vertical up shifts
+      doorL.up_shift = up_shift;  // the shift of the radius of the tires
+      doorL.car_hood = car_hood; // the height of the car hood
+      doorL.car_roof = car_roof; // the height of the car roof
+    }
+
+    { // right door
+      // spec shifts
+      doorR.tire_radius = tire_radius; // the radius of the tires
+      doorR.fender_shift = fender_shift; // the shift of the fenders
+
+      // back - front horizontal shifts
+      doorR.back_line_shift = back_line_shift; // the back of the door shift from the center of the car
+      doorR.front_axle_shift = front_axle_shift; // the shift of the front axle
+      doorR.windshield_shift = windshield_shift; // the shift of the windshield
+      
+      // vertical up shifts
+      doorR.up_shift = up_shift;  // the shift of the radius of the tires
+      doorR.car_hood = car_hood; // the height of the car hood
+      doorR.car_roof = car_roof; // the height of the car roof
+    }
+  }
+
+  { // set bumpers vars
+    { // rear bumper
+      rear_bumper.side_shift = side_shift; // the shift of the side of the car
+    
+      // spec shifts
+      rear_bumper.tire_radius = tire_radius; // the radius of the tires
+      rear_bumper.fender_shift = fender_shift; // the shift of the fenders
+      rear_bumper.new_radius = new_radius; // the new radius of the rear bumper
+
+      // back - front horizontal shifts
+      rear_bumper.back_axle_shift = back_axle_shift; // the shift of the rear axle
+      rear_bumper.rear_bumper_begin_x = rear_bumper_begin_x; // the x coordinate of the beginning of the rear bumper
+      rear_bumper.rear_bumper_shift = rear_bumper_shift; // the shift of the rear bumper
+      
+      // vertical up shifts
+      rear_bumper.up_shift = up_shift;  // the shift of the radius of the tires
+      rear_bumper.rear_bumper_begin_y = rear_bumper_begin_y; // the y coordinate of the beginning of the rear bumper
+      rear_bumper.bumper_elevation_shift = bumper_elevation_shift; // the elevation shift of the bumpers
+    }
+
+    { // front bumper
+      // left - right horizontal shifts
+      front_bumper.side_shift = side_shift; // the shift of the side of the car
+      
+      // spec shifts
+      front_bumper.tire_radius = tire_radius; // the radius of the tires
+      front_bumper.fender_shift = fender_shift; // the shift of the fenders
+      front_bumper.new_radius = new_radius; // the new radius of the front bumper
+
+      // back - front horizontal shifts
+      front_bumper.front_axle_shift = front_axle_shift; // the shift of the front axle
+      front_bumper.front_bumper_begin_x = front_bumper_begin_x; // the x coordinate of the beginning of the front bumper
+      front_bumper.front_bumper_shift = front_bumper_shift; // the shift of the front bumper
+      
+      // vertical up shifts
+      front_bumper.up_shift = up_shift;  // the shift of the radius of the tires
+      front_bumper.front_bumper_begin_y = front_bumper_begin_y; // the y coordinate of the beginning of the front bumper
+    }
+  }
+}
+
+Car::Car(){
+  setParameters();
+}
 
 Car::~Car(){}
 
 void Car::drawTheWheels(){
-  GLdouble back_shift = -2.0, front_shift = 2.0, side_shift = 1.5;
-
   // back left wheel
   {
     glPushMatrix();
-    glTranslated(back_shift, 0.0, side_shift); // translate to the back left
+    glTranslated(-back_axle_shift, 0.0, wheel_side_shift); // translate to the back left
     wheelBL.drawWheel();
     glPopMatrix();
   }
@@ -18,7 +118,7 @@ void Car::drawTheWheels(){
   // back right wheel
   {
     glPushMatrix();
-    glTranslated(back_shift, 0.0, -side_shift); // translate to the back right
+    glTranslated(-back_axle_shift, 0.0, -wheel_side_shift); // translate to the back right
     wheelBR.drawWheel();
     glPopMatrix();
   }
@@ -26,7 +126,7 @@ void Car::drawTheWheels(){
   // front left wheel
   {
     glPushMatrix();
-    glTranslated(front_shift, 0.0, side_shift); // translate to the front left
+    glTranslated(front_axle_shift, 0.0, wheel_side_shift); // translate to the front left
     wheelFL.drawWheel();
     glPopMatrix();
   }
@@ -34,7 +134,7 @@ void Car::drawTheWheels(){
   // front right wheel
   {
     glPushMatrix();
-    glTranslated(front_shift, 0.0, -side_shift); // translate to the front right
+    glTranslated(front_axle_shift, 0.0, -wheel_side_shift); // translate to the front right
     wheelFR.drawWheel();
     glPopMatrix();
   }
@@ -44,72 +144,25 @@ void Car::drawChassis(){
   chassis.drawChassis();
 }
 
-void drawChassis() {
-  glColor3f(0.8, 0.0, 0.0);
+void Car::drawDoors(){
+  { // leftDoor
+    glPushMatrix();
+    glTranslated(0.0, 0.0, -side_shift); // translate to the left
+    doorL.drawDoor();
+    glPopMatrix();
+  }
 
-  glBegin(GL_QUADS);
-  // Base
-  glVertex3f(-3, 0, 1.2);
-  glVertex3f( 3, 0, 1.2);
-  glVertex3f( 3, 1, 1.2);
-  glVertex3f(-3, 1, 1.2);
-
-  // Trás
-  glVertex3f(-3, 0, -1.2);
-  glVertex3f(-3, 1, -1.2);
-  glVertex3f( 3, 1, -1.2);
-  glVertex3f( 3, 0, -1.2);
-  glEnd();
+  { // rightDoor
+    glPushMatrix();
+    glTranslated(0.0, 0.0, side_shift); // translate to the right
+    doorR.drawDoor();
+    glPopMatrix();
+  }  
 }
 
-void drawDoors() {
-  glColor3f(0.6, 0.0, 0.0);
-
-  // Porta esquerda
-  glBegin(GL_QUADS);
-  glVertex3f(-1.5, 0.2, 1.21);
-  glVertex3f( 0.0, 0.2, 1.21);
-  glVertex3f( 0.0, 0.9, 1.21);
-  glVertex3f(-1.5, 0.9, 1.21);
-  glEnd();
-
-  // Porta direita
-  glBegin(GL_QUADS);
-  glVertex3f(0.0, 0.2, 1.21);
-  glVertex3f(1.5, 0.2, 1.21);
-  glVertex3f(1.5, 0.9, 1.21);
-  glVertex3f(0.0, 0.9, 1.21);
-  glEnd();
-}
-
-void drawBumper() {
-  glColor3f(0.2, 0.2, 0.2);
-
-  // Frente
-  glBegin(GL_QUADS);
-  glVertex3f(-3.2, 0, 1.2);
-  glVertex3f(-3.0, 0, 1.2);
-  glVertex3f(-3.0, 0.5, 1.2);
-  glVertex3f(-3.2, 0.5, 1.2);
-  glEnd();
-
-  // Trás
-  glBegin(GL_QUADS);
-  glVertex3f(3.0, 0, 1.2);
-  glVertex3f(3.2, 0, 1.2);
-  glVertex3f(3.2, 0.5, 1.2);
-  glVertex3f(3.0, 0.5, 1.2);
-  glEnd();
-}
-
-void drawFender(float x, float z) {
-  glPushMatrix();
-  glTranslatef(x, 0.5, z);
-
-  glColor3f(0.7, 0.0, 0.0);
-  glutSolidCube(1.2);
-
-  glPopMatrix();
+void Car::drawBumpers(){
+  rear_bumper.drawBumper();
+  front_bumper.drawBumper();
 }
 
 void Car::drawCar() {
@@ -118,33 +171,6 @@ void Car::drawCar() {
   // based on the center point of the car
   drawTheWheels();
   drawChassis();
-  // drawDoors();
-  // drawBumper();
-
-  // // Paralamas
-  // drawFender(-2.0, 1.2);
-  // drawFender( 2.0, 1.2);
-  // drawFender(-2.0,-1.2);
-  // drawFender( 2.0,-1.2);
-
-  // // Rodas
-  // glPushMatrix();
-  // glTranslatef(-2.0, 0.0, 1.5);
-  // drawWheel();
-  // glPopMatrix();
-
-  // glPushMatrix();
-  // glTranslatef(2.0, 0.0, 1.5);
-  // drawWheel();
-  // glPopMatrix();
-
-  // glPushMatrix();
-  // glTranslatef(-2.0, 0.0, -1.5);
-  // drawWheel();
-  // glPopMatrix();
-
-  // glPushMatrix();
-  // glTranslatef(2.0, 0.0, -1.5);
-  // drawWheel();
-  // glPopMatrix();
+  drawDoors();
+  drawBumpers();
 }
