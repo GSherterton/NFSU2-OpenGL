@@ -1,4 +1,5 @@
 #include <cmath>
+#include "Colors.h"
 #include "Platform.h"
 
 static const int SEGMENTS = 64;
@@ -8,7 +9,7 @@ Platform::Platform(GLfloat radius, GLfloat thickness)
     : m_radius(radius), m_thickness(thickness), m_rotation(0.0f) {}
 
 void Platform::drawDisc(GLfloat y) {
-    glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(COLOR_RED);
     // clang-format off
     glBegin(GL_TRIANGLE_FAN);
         glVertex3f(0.0f, y, 0.0f);
@@ -21,7 +22,7 @@ void Platform::drawDisc(GLfloat y) {
 }
 
 void Platform::drawSide() {
-    glColor3f(0.0f, 0.0f, 1.0f);
+    glColor3f(COLOR_BLUE);
     // clang-format off
     glBegin(GL_QUAD_STRIP);
         for (int i = 0; i <= SEGMENTS; ++i) {

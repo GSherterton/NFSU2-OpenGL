@@ -22,7 +22,6 @@ class Garage {
     void drawBackWall();
     void drawLeftWall();
     void drawRightWall();
-    void drawPillars();
 
     Texture* m_wallTex;
     Texture* m_floorTex;
