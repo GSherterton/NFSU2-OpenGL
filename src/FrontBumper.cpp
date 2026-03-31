@@ -13,10 +13,10 @@ void FrontBumper::drawBumper(){
   // define the points of the down splines
   vector<array<array<GLfloat, 3>, 4>> down_ctrlpoints = {
     {{ // front right fender
-      {front_bumper_begin_x             , front_bumper_begin_y             , side_shift},
-      {front_bumper_begin_x+fender_shift, front_bumper_begin_y-fender_shift, side_shift},
-      {front_axle_shift+(new_radius)    , up_shift+(new_radius/2)          , side_shift},
-      {front_axle_shift+(new_radius)    , up_shift                         , side_shift},
+      {front_bumper_begin_x                     , front_bumper_begin_y             , side_shift},
+      {front_axle_shift+((float)0.79*new_radius), up_shift+((float)0.65*new_radius), side_shift},
+      {front_axle_shift+(new_radius)            , up_shift+((float)0.43*new_radius), side_shift},
+      {front_axle_shift+(new_radius)            , up_shift                         , side_shift},
     }},
     {{ // front bumper
       {front_axle_shift+(new_radius)                   , up_shift, side_shift},
@@ -37,10 +37,10 @@ void FrontBumper::drawBumper(){
       {front_axle_shift+(new_radius)                   , up_shift, -side_shift},
     }},
     {{ // front left fender
-      {front_axle_shift+(new_radius)    , up_shift                         , -side_shift},
-      {front_axle_shift+(new_radius)    , up_shift+(new_radius/2)          , -side_shift},
-      {front_bumper_begin_x+fender_shift, front_bumper_begin_y-fender_shift, -side_shift},
-      {front_bumper_begin_x             , front_bumper_begin_y             , -side_shift},
+      {front_axle_shift+(new_radius)            , up_shift                         , -side_shift},
+      {front_axle_shift+(new_radius)            , up_shift+((float)0.43*new_radius), -side_shift},
+      {front_axle_shift+((float)0.79*new_radius), up_shift+((float)0.65*new_radius), -side_shift},
+      {front_bumper_begin_x                     , front_bumper_begin_y             , -side_shift},
     }},
   };
 

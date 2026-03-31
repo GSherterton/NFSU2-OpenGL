@@ -6,23 +6,31 @@ void Car::setParameters(){
     chassis.side_shift = side_shift; // the shift of the side of the car
 
     // spec shifts
-    chassis.tire_radius = tire_radius; // the radius of the tires
+    chassis.tire_radius  = tire_radius;  // the radius of the tires
     chassis.fender_shift = fender_shift; // the shift of the fenders
+    chassis.new_radius   = new_radius;   // the new radius of the rear bumper
 
     // back - front horizontal shifts
-    chassis.back_axle_shift    = back_axle_shift; // the shift of the rear axle  
-    chassis.front_axle_shift   = front_axle_shift; // the shift of the front axle
-    chassis.rear_bumper_shift  = rear_bumper_shift; // the shift of the rear bumper
-    chassis.front_bumper_shift = front_bumper_shift; // the shift of the front bumper
+    //axles
+    chassis.back_axle_shift  = back_axle_shift;  // the shift of the rear axle  
+    chassis.front_axle_shift = front_axle_shift; // the shift of the front axle
+    //bumpers
+    chassis.rear_bumper_shift    = rear_bumper_shift;    // the shift of the rear bumper
+    chassis.front_bumper_shift   = front_bumper_shift;   // the shift of the front bumper
+    chassis.rear_bumper_begin_x  = rear_bumper_begin_x;  // the x coordinate of the beginning of the rear bumper
+    chassis.front_bumper_begin_x = front_bumper_begin_x; // the x coordinate of the beginning of the front bumper
+    //windshield
     chassis.windshield_shift   = windshield_shift; // the shift of the windshield
     
     // vertical up shifts
-    chassis.up_shift = up_shift;  // the shift of the radius of the tires
-    chassis.car_hood         = car_hood;  // the height of the car hood
-    chassis.car_front_bumper = car_front_bumper; // the height of the car bumpers
+    chassis.up_shift = up_shift; // the shift of the radius of the tires
+    chassis.car_hood = car_hood; // the height of the car hood
+    chassis.car_roof = car_roof; // the height of the car roof
+    //bumpers
     chassis.car_rear_bumper  = car_rear_bumper;  // the height of the car bumpers
-    chassis.car_roof   = car_roof;  // the height of the car roof
-    chassis.bumper_elevation_shift = bumper_elevation_shift; // the elevation shift of the bumpers
+    chassis.car_front_bumper = car_front_bumper; // the height of the car bumpers
+    chassis.rear_bumper_begin_y = rear_bumper_begin_y; // the y coordinate of the beginning of the rear bumper
+    chassis.front_bumper_begin_y = front_bumper_begin_y; // the y coordinate of the beginning of the front bumper
   }
 
   { // set doors vars
@@ -169,8 +177,10 @@ void Car::drawCar() {
   glPushMatrix(); // put everything that will be drawed into a new transf matrix
 
   // based on the center point of the car
-  drawTheWheels();
+  // drawTheWheels();
   drawChassis();
-  drawDoors();
+  // drawDoors();
   drawBumpers();
+
+  glPopMatrix(); // pop the matrix to return to the previous one
 }

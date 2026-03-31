@@ -42,36 +42,29 @@ class Car{
     GLfloat side_shift = 1.85; // the shift of the side of the car
     GLfloat wheel_side_shift = side_shift - 0.7/2; // the shift of the wheels from the center of the car
 
-
     // spec shifts
     GLfloat tire_radius = 0.7; // the radius of the tires
     GLfloat fender_shift = 0.1; // the shift of the fenders
     GLfloat new_radius = tire_radius + fender_shift; // the new radius of the rear bumper
 
-
     // back - front horizontal shifts
     // axles
     GLfloat back_axle_shift    = tire_radius + 2.1; // the shift of the rear axle  
     GLfloat front_axle_shift   = tire_radius + 2.1; // the shift of the front axle
-
     // doors
     GLfloat back_line_shift = tire_radius+fender_shift; // the back of the door shift from the center of the car
-    
     // bumpers
-    GLfloat rear_bumper_begin_x = back_axle_shift + (tire_radius)/2; // the x coordinate of the beginning of the rear bumper
     GLfloat rear_bumper_shift  = 1.0; // the shift of the rear bumper
-    GLfloat front_bumper_begin_x = front_axle_shift + (new_radius * cos(45.0*PI/180)); // the x coordinate of the beginning of the front bumper
     GLfloat front_bumper_shift = 1.0; // the shift of the front bumper
-
+    GLfloat rear_bumper_begin_x = back_axle_shift + (tire_radius)/2; // the x coordinate of the beginning of the rear bumper
+    GLfloat front_bumper_begin_x = front_axle_shift + (new_radius * cos(45.0*PI/180)); // the x coordinate of the beginning of the front bumper
     // windshield
     GLfloat windshield_shift   = 0.5; // the shift of the windshield
     
-
     // vertical up shifts
     GLfloat up_shift = 0.7;  // the shift of the radius of the tires
     GLfloat car_hood         = up_shift + tire_radius + 0.7;  // the height of the car hood
     GLfloat car_roof   = up_shift + tire_radius + 0.9 + 0.7;  // the height of the car roof
-
     // bumpers 
     GLfloat car_front_bumper = up_shift + tire_radius + 0.35; // the height of the car bumpers
     GLfloat car_rear_bumper  = up_shift + tire_radius + 0.9;  // the height of the car bumpers

@@ -5,7 +5,6 @@
 #include <math.h>
 
 #define PI 3.14159265
-#define THETA 20.0
 #define RESOLUTION 30
 
 using namespace std;
