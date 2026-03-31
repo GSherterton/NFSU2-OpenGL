@@ -1,9 +1,11 @@
 /*
  * Also the cameras moves with w, a, s, d, space and z keys.
+ * and the m key to enable/disable the camera movement.
  */
 
 #include <GL/glut.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "Camera.h"
 #include "Car.h"
@@ -17,6 +19,8 @@ using namespace std;
 // Camera camera(-10, 5, 5);
 Camera camera(5, 0, 0);
 Car carro;
+
+bool move_camera = false;
 
 void init(){
   glClearColor (1.0, 1.0, 1.0, 0.0);
@@ -33,7 +37,6 @@ void display(){
   camera.setLookAt();
 
   carro.drawCar();
-  // glutWireCube (1.0); // só um exemplo
 
   glutSwapBuffers();
 }
@@ -43,7 +46,7 @@ void reshape(int w, int h){
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity();
 
-  glFrustum (-1.0, 1.0, -1.0, 1.0, 1.0, 30.0); // podemos alterar dps isso se ficar ruim
+  gluPerspective(45.0, (GLfloat) w/(GLfloat) h, 1.0, 30.0);
 
   glMatrixMode(GL_MODELVIEW);
 }
@@ -52,8 +55,13 @@ void keyboard(unsigned char key, int x, int y){
   if(key == 27 /* ESC */){
     exit(0);
   }else{
+    // abilitates the camera movement
+    if(key == 'm'){
+      move_camera = !move_camera;
+    }
+
     // manipulate camera
-    {
+    if(move_camera){
       GLdouble x = camera.posicao[0], y = camera.posicao[2];
 
       if(key == 'w'){ // closer

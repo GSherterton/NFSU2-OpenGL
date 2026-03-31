@@ -56,7 +56,7 @@ Camera::Camera(const GLdouble x, const GLdouble y, const GLdouble z){ // cria um
   posicao[2] = z;
 
   direcao[0] = 0;
-  direcao[1] = 0;
+  direcao[1] = 1.5;
   direcao[2] = 0;
 
   readData(); // tries read the data, if not possible, it will keep the default position
