@@ -1,11 +1,22 @@
+/*
+ * Also the cameras moves with w, a, s, d, space and z keys.
+ * and the m key to enable/disable the camera movement.
+ */
+
 #include <GL/glut.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "Camera.h"
 #include "Garage.h"
 #include "Platform.h"
 #include "Poster.h"
 #include "Shelf.h"
+#include "Car.h"
+
+#define PI 3.14159265
+#define THETA 20.0
+#define STEP 1.0
 
 Camera camera(0, 2.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
@@ -14,54 +25,98 @@ Shelf shelf(-4.5f, 0.0f, -4.97f, 1.2f, 2.5f, 0.5f);
 Poster poster1(0.2f, 1.0f, -4.99f, 1.4f, 2.1f);
 Poster poster2(1.7f, 1.0f, -4.99f, 1.4f, 2.1f);
 Poster poster3(3.2f, 1.0f, -4.99f, 1.4f, 2.1f);
+Car carro;
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
+bool move_camera = false;
 
-void init() {
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glShadeModel(GL_SMOOTH); // select gouraud shading
+void init(){
+  glClearColor (1.0, 1.0, 1.0, 0.0);
+  glShadeModel (GL_SMOOTH); // select gouraud shading
 
-    glEnable(GL_DEPTH_TEST); // enable depth test
+  glEnable(GL_DEPTH_TEST); // enable depth test
+  glEnable(GL_MAP1_VERTEX_3);
 
-    garage.loadTextures("textures/wall.jpg", "textures/floor.jpg", "textures/ceiling.jpg");
-    platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side.jpg");
-    poster1.loadTexture("textures/poster1.jpg");
-    poster2.loadTexture("textures/poster2.jpg");
-    poster3.loadTexture("textures/poster3.jpg");
+  garage.loadTextures("textures/wall.jpg", "textures/floor.jpg", "textures/ceiling.jpg");
+  platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side.jpg");
+  poster1.loadTexture("textures/poster1.jpg");
+  poster2.loadTexture("textures/poster2.jpg");
+  poster3.loadTexture("textures/poster3.jpg");
 }
 
 void display() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glLoadIdentity();
-    camera.setTarget(0.0, 1.5, 0.0); // look at the vertical center of the garage
-    camera.setLookAt();
+  glLoadIdentity();
+  camera.setTarget(0.0, 1.5, 0.0); // look at the vertical center of the garage
+  camera.setLookAt();
 
-    garage.draw();
-    platform.draw();
-    shelf.draw();
-    poster1.draw();
-    poster2.draw();
-    poster3.draw();
+  garage.draw();
+  platform.draw();
+  shelf.draw();
+  poster1.draw();
+  poster2.draw();
+  poster3.draw();
+  carro.drawCar();
 
-    glutSwapBuffers();
+  glutSwapBuffers();
 }
 
 void reshape(int w, int h) {
-    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+  glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
 
-    gluPerspective(60.0, (double)w / (double)h, 1.0, 30.0);
+  gluPerspective(45.0, (GLfloat) w/(GLfloat) h, 1.0, 30.0);
 
     glMatrixMode(GL_MODELVIEW);
 }
 
 void keyboard(unsigned char key, int x, int y) {
-    if (key == 27 /* ESC */) {
-        exit(0);
+  if(key == 27 /* ESC */){
+    exit(0);
+  }else{
+    // abilitates the camera movement
+    if(key == 'm'){
+      move_camera = !move_camera;
     }
+
+    // manipulate camera
+    if(move_camera){
+      GLdouble x = camera.m_position[0], y = camera.m_position[2];
+
+      if(key == 'w'){ // closer
+        camera.m_position[0] = x - (STEP * (x / (sqrt(x*x + y*y))));
+        camera.m_position[2] = y - (STEP * (y / (sqrt(x*x + y*y))));
+      }
+
+      if(key == 's'){ // further
+        camera.m_position[0] = x + (STEP * (x / (sqrt(x*x + y*y))));
+        camera.m_position[2] = y + (STEP * (y / (sqrt(x*x + y*y))));
+      }
+
+      if(key == 'a'){ // rotate left
+        camera.m_position[0] = x * cos(THETA*PI/180) - y * sin(THETA*PI/180);
+        camera.m_position[2] = x * sin(THETA*PI/180) + y * cos(THETA*PI/180);
+      }
+
+      if(key == 'd'){ // rotate right
+        camera.m_position[0] = x * cos(-THETA*PI/180) - y * sin(-THETA*PI/180);
+        camera.m_position[2] = x * sin(-THETA*PI/180) + y * cos(-THETA*PI/180);
+      }
+
+      if(key == ' '){ // up
+        camera.m_position[1] += 1;
+      }
+
+      if(key == 'z'){ // down
+        camera.m_position[1] -= 1;
+      }
+    }
+  
+    glutPostRedisplay();
+  }
 }
 
 void mouse(int button, int state, int x, int y) {
