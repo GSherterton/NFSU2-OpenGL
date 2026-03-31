@@ -19,9 +19,6 @@ class Camera {
     bool readData();
     bool saveData();
 
-    bool readData();
-    bool saveData();
-
     void setPosition(const GLdouble x, const GLdouble y, const GLdouble z);
     void setTarget(const GLdouble x, const GLdouble y, const GLdouble z);
 

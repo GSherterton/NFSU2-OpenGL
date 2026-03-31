@@ -13,7 +13,7 @@ bool Camera::readData(){
     return false;
   }
 
-  fp >> posicao[0] >> posicao[1] >> posicao[2];
+  fp >> m_position[0] >> m_position[1] >> m_position[2];
 
   fp.close();
 
@@ -33,7 +33,7 @@ bool Camera::saveData(){
     return false;
   }
 
-  fp << posicao[0] << " " << posicao[1] << " " << posicao[2] << endl;
+  fp << m_position[0] << " " << m_position[1] << " " << m_position[2] << endl;
 
   fp.close();
 

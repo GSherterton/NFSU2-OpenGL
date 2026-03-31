@@ -28,6 +28,12 @@ sources = [
   'Poster.cpp',
   'Shelf.cpp',
   'Texture.cpp',
+  'Car.cpp',
+  'Chassis.cpp',
+  'Door.cpp',
+  'Wheel.cpp',
+  'RearBumper.cpp',
+  'FrontBumper.cpp',
 ]
 
 # Executable
