@@ -13,6 +13,7 @@
 #include "Poster.h"
 #include "Shelf.h"
 #include "Car.h"
+#include "Menu.h"
 
 #define PI 3.14159265
 #define THETA 20.0
@@ -26,6 +27,7 @@ Poster poster1(0.2f, 1.0f, -4.99f, 1.4f, 2.1f);
 Poster poster2(1.7f, 1.0f, -4.99f, 1.4f, 2.1f);
 Poster poster3(3.2f, 1.0f, -4.99f, 1.4f, 2.1f);
 Car carro;
+Menu menu_interface;
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
@@ -59,6 +61,7 @@ void display() {
   poster2.draw();
   poster3.draw();
   carro.drawCar();
+  menu_interface.drawMenu(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
 
   glutSwapBuffers();
 }
