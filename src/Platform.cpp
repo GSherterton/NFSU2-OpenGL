@@ -51,7 +51,7 @@ void Platform::drawSide() {
     glBegin(GL_QUAD_STRIP);
         for (int i = 0; i <= SEGMENTS; ++i) {
             float angle = TWO_PI * i / SEGMENTS;
-            float u     = (float)i / SEGMENTS;
+            float u     = (float)i / SEGMENTS * 16.0f;
             float x     = m_radius * std::cos(angle);
             float z     = m_radius * std::sin(angle);
             glTexCoord2f(u, 0.0f); glVertex3f(x, 0.0f,        z);
@@ -65,6 +65,10 @@ void Platform::drawSide() {
     }
 }
 
+float Platform::getRotation() const {
+    return m_rotation;
+}
+
 void Platform::addRotation(float delta) {
     m_rotation += delta;
     if (m_rotation >= 360.0f)
@@ -76,8 +80,6 @@ void Platform::addRotation(float delta) {
 void Platform::draw() {
     // clang-format off
     glPushMatrix();
-        glTranslatef(0.0f, 0.0f, 1.0f);
-        glRotatef(m_rotation, 0.0f, 1.0f, 0.0f);
         drawDisc(m_thickness);
         drawSide();
     glPopMatrix();
