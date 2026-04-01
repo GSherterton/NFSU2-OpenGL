@@ -3,14 +3,14 @@
 
 using namespace std;
 
-class Wheel{
+class Wheel {
   public:
     float radius;         // wheel radius
     float width;          // wheel width (thickness)
     float rotation_angle; // wheel rotation angle
 
-    GLubyte rim_color[3]  = {170, 170, 170};  // rim RGB color
-    GLubyte tire_color[3] = {30, 30, 30}; // tire RGB color
+    GLubyte rim_color[3] = {170, 170, 170}; // rim RGB color
+    GLubyte tire_color[3] = {30, 30, 30};   // tire RGB color
 
     GLUquadric* quad = gluNewQuadric();
 

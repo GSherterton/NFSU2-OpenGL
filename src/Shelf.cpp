@@ -2,9 +2,9 @@
 #include "Colors.h"
 #include "Shelf.h"
 
-static const GLfloat UPRIGHT_T = 0.06f;  // vertical side column thickness
-static const GLfloat BOARD_T   = 0.05f;  // horizontal shelf board thickness
-static const GLfloat BACK_T    = 0.04f;  // back panel thickness
+static const GLfloat UPRIGHT_T = 0.06f; // vertical side column thickness
+static const GLfloat BOARD_T = 0.05f;   // horizontal shelf board thickness
+static const GLfloat BACK_T = 0.04f;    // back panel thickness
 
 Shelf::Shelf(GLfloat x, GLfloat y, GLfloat z,
              GLfloat width, GLfloat height, GLfloat depth)

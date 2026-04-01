@@ -2,7 +2,7 @@
 #include <GL/glut.h>
 
 class Lamp {
-public:
+  public:
     void setup();
     void draw();
 };

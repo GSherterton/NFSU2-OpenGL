@@ -5,7 +5,7 @@
 class Shelf {
   public:
     Shelf(GLfloat x, GLfloat y, GLfloat z, GLfloat width, GLfloat height, GLfloat depth);
-    
+
     void draw();
 
   private:
