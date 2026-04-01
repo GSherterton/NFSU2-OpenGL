@@ -53,12 +53,15 @@ void display() {
   camera.setLookAt();
 
   garage.draw();
-  platform.draw();
+  glPushMatrix();
+    glRotatef(platform.getRotation(), 0.0f, 1.0f, 0.0f);
+    platform.draw();
+    carro.drawCar();
+  glPopMatrix();
   shelf.draw();
   poster1.draw();
   poster2.draw();
   poster3.draw();
-  carro.drawCar();
 
   glutSwapBuffers();
 }

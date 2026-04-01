@@ -10,6 +10,7 @@ class Platform {
     void loadTextures(const char* discPath, const char* sidePath);
     void draw();
     void addRotation(float delta);
+    float getRotation() const;
 
   private:
     GLfloat m_radius, m_thickness, m_rotation;

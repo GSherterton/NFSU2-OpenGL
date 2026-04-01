@@ -177,9 +177,9 @@ void Car::drawCar() {
   glPushMatrix(); // put everything that will be drawed into a new transf matrix
 
   // based on the center point of the car
-  // drawTheWheels();
+  drawTheWheels();
   drawChassis();
-  // drawDoors();
+  drawDoors();
   drawBumpers();
 
   glPopMatrix(); // pop the matrix to return to the previous one

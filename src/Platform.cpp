@@ -65,6 +65,10 @@ void Platform::drawSide() {
     }
 }
 
+float Platform::getRotation() const {
+    return m_rotation;
+}
+
 void Platform::addRotation(float delta) {
     m_rotation += delta;
     if (m_rotation >= 360.0f)
@@ -76,8 +80,6 @@ void Platform::addRotation(float delta) {
 void Platform::draw() {
     // clang-format off
     glPushMatrix();
-        glTranslatef(0.0f, 0.0f, 1.0f);
-        glRotatef(m_rotation, 0.0f, 1.0f, 0.0f);
         drawDisc(m_thickness);
         drawSide();
     glPopMatrix();
