@@ -51,7 +51,7 @@ void Platform::drawSide() {
     glBegin(GL_QUAD_STRIP);
         for (int i = 0; i <= SEGMENTS; ++i) {
             float angle = TWO_PI * i / SEGMENTS;
-            float u     = (float)i / SEGMENTS;
+            float u     = (float)i / SEGMENTS * 16.0f;
             float x     = m_radius * std::cos(angle);
             float z     = m_radius * std::sin(angle);
             glTexCoord2f(u, 0.0f); glVertex3f(x, 0.0f,        z);

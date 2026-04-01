@@ -22,9 +22,9 @@ Camera camera(0, 2.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
 Platform platform(3.0f, 0.2f);
 Shelf shelf(-4.5f, 0.0f, -4.97f, 1.2f, 2.5f, 0.5f);
-Poster poster1(0.2f, 1.0f, -4.99f, 1.4f, 2.1f);
-Poster poster2(1.7f, 1.0f, -4.99f, 1.4f, 2.1f);
-Poster poster3(3.2f, 1.0f, -4.99f, 1.4f, 2.1f);
+Poster poster1(0.2f, 1.3f, -4.99f, 1.4f, 2.1f);
+Poster poster2(1.7f, 1.3f, -4.99f, 1.4f, 2.1f);
+Poster poster3(3.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Car carro;
 
 bool mouseLeftDown = false;
@@ -38,8 +38,8 @@ void init(){
   glEnable(GL_DEPTH_TEST); // enable depth test
   glEnable(GL_MAP1_VERTEX_3);
 
-  garage.loadTextures("textures/wall.jpg", "textures/floor.jpg", "textures/ceiling.jpg");
-  platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side.jpg");
+  garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
+  platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side2.jpg");
   poster1.loadTexture("textures/poster1.jpg");
   poster2.loadTexture("textures/poster2.jpg");
   poster3.loadTexture("textures/poster3.jpg");
