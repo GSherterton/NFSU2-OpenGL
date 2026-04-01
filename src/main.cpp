@@ -9,6 +9,7 @@
 
 #include "Camera.h"
 #include "Garage.h"
+#include "Lamp.h"
 #include "Platform.h"
 #include "Poster.h"
 #include "Shelf.h"
@@ -20,6 +21,7 @@
 
 Camera camera(0, 2.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
+Lamp lamp;
 Platform platform(3.0f, 0.2f);
 Shelf shelf(-4.5f, 0.0f, -4.97f, 1.2f, 2.5f, 0.5f);
 Poster poster1(0.2f, 1.3f, -4.99f, 1.4f, 2.1f);
@@ -38,6 +40,14 @@ void init(){
   glEnable(GL_DEPTH_TEST); // enable depth test
   glEnable(GL_MAP1_VERTEX_3);
 
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
+  glEnable(GL_COLOR_MATERIAL);
+  glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+  GLfloat globalAmbient[] = {0.15f, 0.15f, 0.15f, 1.0f};
+  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
+  lamp.setup();
+
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
   platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side2.jpg");
   poster1.loadTexture("textures/poster1.jpg");
@@ -52,6 +62,7 @@ void display() {
   camera.setTarget(0.0, 1.5, 0.0); // look at the vertical center of the garage
   camera.setLookAt();
 
+  lamp.draw();
   garage.draw();
   glPushMatrix();
     glRotatef(platform.getRotation(), 0.0f, 1.0f, 0.0f);

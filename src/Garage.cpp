@@ -21,6 +21,7 @@ void Garage::drawFloor() {
     glColor3f(COLOR_WHITE);
     // clang-format off
     glBegin(GL_QUADS);
+        glNormal3f(0.0f, 1.0f, 0.0f);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, 0.0f,  m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, 0.0f,  m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, 0.0f, -m_depth);
@@ -42,6 +43,7 @@ void Garage::drawCeiling() {
     glColor3f(COLOR_WHITE);
     // clang-format off
     glBegin(GL_QUADS);
+        glNormal3f(0.0f, -1.0f, 0.0f);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, m_height,  m_depth);
         glTexCoord2f(0.0f, 1.0f); glVertex3f(-m_width, m_height, -m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, m_height, -m_depth);
@@ -63,6 +65,7 @@ void Garage::drawBackWall() {
     glColor3f(COLOR_WHITE);
     // clang-format off
     glBegin(GL_QUADS);
+        glNormal3f(0.0f, 0.0f, 1.0f);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, 0.0f,      -m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, 0.0f,      -m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, m_height,  -m_depth);
@@ -84,6 +87,7 @@ void Garage::drawLeftWall() {
     glColor3f(COLOR_WHITE);
     // clang-format off
     glBegin(GL_QUADS);
+        glNormal3f(1.0f, 0.0f, 0.0f);
         glTexCoord2f(0.0f, 0.0f); glVertex3f(-m_width, 0.0f,      m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f(-m_width, 0.0f,     -m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f(-m_width, m_height, -m_depth);
@@ -105,6 +109,7 @@ void Garage::drawRightWall() {
     glColor3f(COLOR_WHITE);
     // clang-format off
     glBegin(GL_QUADS);
+        glNormal3f(-1.0f, 0.0f, 0.0f);
         glTexCoord2f(0.0f, 0.0f); glVertex3f( m_width, 0.0f,      -m_depth);
         glTexCoord2f(1.0f, 0.0f); glVertex3f( m_width, 0.0f,       m_depth);
         glTexCoord2f(1.0f, 1.0f); glVertex3f( m_width, m_height,   m_depth);

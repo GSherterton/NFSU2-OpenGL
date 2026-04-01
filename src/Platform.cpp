@@ -25,6 +25,7 @@ void Platform::drawDisc(GLfloat y) {
     glColor3f(COLOR_WHITE);
     // clang-format off
     glBegin(GL_TRIANGLE_FAN);
+        glNormal3f(0.0f, 1.0f, 0.0f);
         glTexCoord2f(0.5f, 0.5f);
         glVertex3f(0.0f, y, 0.0f);
         for (int i = 0; i <= SEGMENTS; ++i) {
@@ -54,6 +55,7 @@ void Platform::drawSide() {
             float u     = (float)i / SEGMENTS * 16.0f;
             float x     = m_radius * std::cos(angle);
             float z     = m_radius * std::sin(angle);
+            glNormal3f(std::cos(angle), 0.0f, std::sin(angle));
             glTexCoord2f(u, 0.0f); glVertex3f(x, 0.0f,        z);
             glTexCoord2f(u, 1.0f); glVertex3f(x, m_thickness, z);
         }
