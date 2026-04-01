@@ -176,6 +176,9 @@ void Car::drawBumpers(){
 void Car::drawCar() {
   glPushMatrix(); // put everything that will be drawed into a new transf matrix
 
+  glTranslatef(0.0f, 0.19f, 0.0f); // lift the car up
+  glScalef(0.66f, 0.66f, 0.66f); // scale the car
+
   // based on the center point of the car
   drawTheWheels();
   drawChassis();
