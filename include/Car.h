@@ -38,6 +38,11 @@ class Car{
     void drawBumpers();
 
     // parameters vars
+    // colors
+    GLubyte car_lines_color[3]  = {0, 0, 0};       // car lines RGB color
+    GLubyte car_color[3]  = {0, 0, 100};           // car RGB color
+    GLubyte car_window_color[4]  = {20, 20, 50, 250}; // car window RGB color
+
     // left - right horizontal shifts
     GLfloat side_shift = 1.85; // the shift of the side of the car
     GLfloat wheel_side_shift = side_shift - 0.7/2; // the shift of the wheels from the center of the car

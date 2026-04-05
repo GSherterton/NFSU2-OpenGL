@@ -11,7 +11,9 @@ using namespace std;
 
 class Chassis{
   public:
-    GLubyte car_color[3]  = {170, 0, 0};  // car RGB color
+    GLubyte car_lines_color[3]  = {0, 0, 0};      // car lines RGB color
+    GLubyte car_color[3]  = {0, 0, 100};          // car RGB color
+    GLubyte car_window_color[4]  = {20, 20, 50, 250}; // car window RGB color
 
     Chassis();
     ~Chassis();
@@ -38,6 +40,8 @@ class Chassis{
     GLfloat front_bumper_shift = 1.0; // the shift of the front bumper
     //windshield
     GLfloat windshield_shift   = 0.5; // the shift of the windshield
+    //doors
+    GLfloat back_line_shift = tire_radius+fender_shift; // the back of the door shift from the center of the car
     
     // vertical up shifts
     GLfloat up_shift = 0.7;  // the shift of the radius of the tires
