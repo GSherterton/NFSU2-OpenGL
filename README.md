@@ -57,3 +57,11 @@ meson compile -C build
 - [X] Simplified car
 - [ ] Lighting
 - [ ] Implement bump mapping for the walls
+- [X] Add music and sound effects 
+- [ ] Add buttons interface
+- [ ] Improve music, sound effects and connect with the animations and interface
+
+## References
+
+- [General Sound](https://sounds.spriters-resource.com/pc_computer/needforspeedunderground2/)
+- [Music](https://archive.org/details/need-for-speed-underground-2-original-soundtrack)
