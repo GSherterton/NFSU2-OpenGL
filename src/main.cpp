@@ -6,8 +6,11 @@
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <math.h>
+#include <vector>
+#include <array>
 
 #include "Camera.h"
+#include "Colors.h"
 #include "Garage.h"
 #include "Platform.h"
 #include "Poster.h"
@@ -31,6 +34,16 @@ Car carro;
 bool mouseLeftDown = false;
 int lastMouseX = 0;
 bool move_camera = false;
+
+const std::vector<std::array<GLubyte, 3>> carBodyColors = {
+    {CAR_COLOR_BLUE},
+    {CAR_COLOR_RED},
+    {CAR_COLOR_GREEN},
+    {CAR_COLOR_WHITE},
+    {CAR_COLOR_ORANGE},
+    {CAR_COLOR_BLACK},
+};
+int currentCarColor = 0;
 
 void init(){
   glClearColor (1.0, 1.0, 1.0, 0.0);
@@ -89,6 +102,13 @@ void keyboard(unsigned char key, int x, int y) {
     // abilitates the camera movement
     if(key == 'm'){
       move_camera = !move_camera;
+    }
+
+    // cycle car body color
+    if(key == 'p'){
+      currentCarColor = (currentCarColor + 1) % (int)carBodyColors.size();
+      const auto& c = carBodyColors[currentCarColor];
+      carro.setBodyColor(c[0], c[1], c[2]);
     }
 
     // manipulate camera

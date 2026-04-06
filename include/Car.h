@@ -30,6 +30,7 @@ class Car{
     ~Car();
 
     void drawCar();
+    void setBodyColor(GLubyte r, GLubyte g, GLubyte b);
   
   private:
     void drawTheWheels();

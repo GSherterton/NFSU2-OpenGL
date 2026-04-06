@@ -101,6 +101,26 @@ void Car::setParameters(){
     }
 
     { // right door
+      // colors
+      { // car lines color
+        doorR.car_lines_color[0] =  car_lines_color[0]; // car lines RGB color
+        doorR.car_lines_color[1] =  car_lines_color[1]; // car lines RGB color
+        doorR.car_lines_color[2] =  car_lines_color[2]; // car lines RGB color
+      }
+
+      { // car color
+        doorR.car_color[0] = car_color[0];  // car RGB color
+        doorR.car_color[1] = car_color[1];  // car RGB color
+        doorR.car_color[2] = car_color[2];  // car RGB color
+      }
+
+      { // car window color
+        doorR.car_window_color[0] = car_window_color[0]; // car window RGB color
+        doorR.car_window_color[1] = car_window_color[1]; // car window RGB color
+        doorR.car_window_color[2] = car_window_color[2]; // car window RGB color
+        doorR.car_window_color[3] = car_window_color[3]; // car window RGB color
+      }
+
       // spec shifts
       doorR.tire_radius = tire_radius; // the radius of the tires
       doorR.fender_shift = fender_shift; // the shift of the fenders
@@ -249,6 +269,13 @@ void Car::drawDoors(){
 void Car::drawBumpers(){
   rear_bumper.drawBumper();
   front_bumper.drawBumper();
+}
+
+void Car::setBodyColor(GLubyte r, GLubyte g, GLubyte b) {
+    car_color[0] = r;
+    car_color[1] = g;
+    car_color[2] = b;
+    setParameters();
 }
 
 void Car::drawCar() {
