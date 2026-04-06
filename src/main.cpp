@@ -70,22 +70,22 @@ void init(){
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   if (ma_engine_init(NULL, &audioEngine) == MA_SUCCESS) {
-    if (ma_sound_init_from_file(&audioEngine, "sounds/musics/01. Snoop Dogg - Riders On The Storm (Fredwreck Remix).mp3",
-            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
-            NULL, NULL, &bgMusic) == MA_SUCCESS) {
-      ma_sound_set_looping(&bgMusic, MA_TRUE);
-      ma_sound_start(&bgMusic);
-    }
+    // bg music
+    ma_sound_init_from_file(&audioEngine,
+        "sounds/musics/01. Snoop Dogg - Riders On The Storm (Fredwreck Remix).mp3",
+        MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC, NULL, NULL, &bgMusic);
+    ma_sound_set_looping(&bgMusic, MA_TRUE);
+    ma_sound_start(&bgMusic);
+
+    // sfx
     ma_sound_init_from_file(&audioEngine, "sounds/Hydraulics_00_MB_04.mp3",
-            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
-            NULL, NULL, &hydraulicsSound);
+        MA_SOUND_FLAG_DECODE, NULL, NULL, &hydraulicsSound);
     ma_sound_set_looping(&hydraulicsSound, MA_TRUE);
+
     ma_sound_init_from_file(&audioEngine, "sounds/FE_MB_19.mp3",
-            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
-            NULL, NULL, &shakeSound);
+        MA_SOUND_FLAG_DECODE, NULL, NULL, &shakeSound);
     ma_sound_init_from_file(&audioEngine, "sounds/FE_MB_16.mp3",
-            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
-            NULL, NULL, &spraySound);
+        MA_SOUND_FLAG_DECODE, NULL, NULL, &spraySound);
   }
 
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
