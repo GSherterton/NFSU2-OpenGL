@@ -2,6 +2,26 @@
 
 void Car::setParameters(){
   { // set chassis vars
+    // colors
+    { // car lines color
+      chassis.car_lines_color[0] =  car_lines_color[0]; // car lines RGB color
+      chassis.car_lines_color[1] =  car_lines_color[1]; // car lines RGB color
+      chassis.car_lines_color[2] =  car_lines_color[2]; // car lines RGB color
+    }
+
+    { // car color
+      chassis.car_color[0] = car_color[0];  // car RGB color
+      chassis.car_color[1] = car_color[1];  // car RGB color
+      chassis.car_color[2] = car_color[2];  // car RGB color
+    }
+
+    { // car window color
+      chassis.car_window_color[0] = car_window_color[0]; // car window RGB color
+      chassis.car_window_color[1] = car_window_color[1]; // car window RGB color
+      chassis.car_window_color[2] = car_window_color[2]; // car window RGB color
+      chassis.car_window_color[3] = car_window_color[3]; // car window RGB color
+    }
+
     // left - right horizontal shifts
     chassis.side_shift = side_shift; // the shift of the side of the car
 
@@ -21,7 +41,13 @@ void Car::setParameters(){
     chassis.front_bumper_begin_x = front_bumper_begin_x; // the x coordinate of the beginning of the front bumper
     //windshield
     chassis.windshield_shift   = windshield_shift; // the shift of the windshield
-    
+    //doors
+    chassis.back_line_shift = back_line_shift; // the back of the door shift from the center of the car
+    // lights
+    chassis.tailight_width = tailight_width; // the width of the tailight
+    chassis.frontlight_width = frontlight_width; // the width of the frontlight
+    chassis.frontlight_arrow_width = frontlight_arrow_width; // the width of the arrow of the frontlight
+
     // vertical up shifts
     chassis.up_shift = up_shift; // the shift of the radius of the tires
     chassis.car_hood = car_hood; // the height of the car hood
@@ -31,10 +57,34 @@ void Car::setParameters(){
     chassis.car_front_bumper = car_front_bumper; // the height of the car bumpers
     chassis.rear_bumper_begin_y = rear_bumper_begin_y; // the y coordinate of the beginning of the rear bumper
     chassis.front_bumper_begin_y = front_bumper_begin_y; // the y coordinate of the beginning of the front bumper
+    // lights
+    chassis.tailight_bot_y = tailight_bot_y; // the y coordinate of the bottom of the tailight
+    chassis.tailight_top_y = tailight_top_y; // the y coordinate of the top of the tailight (the bottom plus the height of the tailight)
+    chassis.tailight_divider = tailight_divider;
   }
 
   { // set doors vars
     { // left door
+      // colors
+      { // car lines color
+        doorL.car_lines_color[0] =  car_lines_color[0]; // car lines RGB color
+        doorL.car_lines_color[1] =  car_lines_color[1]; // car lines RGB color
+        doorL.car_lines_color[2] =  car_lines_color[2]; // car lines RGB color 
+      }
+
+      { // car color
+        doorL.car_color[0] = car_color[0];  // car RGB color
+        doorL.car_color[1] = car_color[1];  // car RGB color
+        doorL.car_color[2] = car_color[2];  // car RGB color
+      }
+
+      { // car window color
+        doorL.car_window_color[0] = car_window_color[0]; // car window RGB color
+        doorL.car_window_color[1] = car_window_color[1]; // car window RGB color
+        doorL.car_window_color[2] = car_window_color[2]; // car window RGB color
+        doorL.car_window_color[3] = car_window_color[3]; // car window RGB color
+      }
+
       // spec shifts
       doorL.tire_radius = tire_radius; // the radius of the tires
       doorL.fender_shift = fender_shift; // the shift of the fenders
@@ -69,6 +119,19 @@ void Car::setParameters(){
 
   { // set bumpers vars
     { // rear bumper
+      // colors
+      { // car lines color
+        rear_bumper.car_lines_color[0] =  car_lines_color[0]; // car lines RGB color
+        rear_bumper.car_lines_color[1] =  car_lines_color[1]; // car lines RGB color
+        rear_bumper.car_lines_color[2] =  car_lines_color[2]; // car lines RGB color
+      }
+
+      { // car color
+        rear_bumper.car_color[0] = car_color[0];  // car RGB color
+        rear_bumper.car_color[1] = car_color[1];  // car RGB color
+        rear_bumper.car_color[2] = car_color[2];  // car RGB color
+      }
+
       rear_bumper.side_shift = side_shift; // the shift of the side of the car
     
       // spec shifts
@@ -88,6 +151,19 @@ void Car::setParameters(){
     }
 
     { // front bumper
+      // colors
+      { // car lines color
+        front_bumper.car_lines_color[0] =  car_lines_color[0]; // car lines RGB color
+        front_bumper.car_lines_color[1] =  car_lines_color[1]; // car lines RGB color
+        front_bumper.car_lines_color[2] =  car_lines_color[2]; // car lines RGB color
+      }
+
+      { // car color
+        front_bumper.car_color[0] = car_color[0];  // car RGB color
+        front_bumper.car_color[1] = car_color[1];  // car RGB color
+        front_bumper.car_color[2] = car_color[2];  // car RGB color
+      }
+
       // left - right horizontal shifts
       front_bumper.side_shift = side_shift; // the shift of the side of the car
       
@@ -118,7 +194,7 @@ void Car::drawTheWheels(){
   // back left wheel
   {
     glPushMatrix();
-    glTranslated(-back_axle_shift, 0.0, wheel_side_shift); // translate to the back left
+    glTranslated(-back_axle_shift, 0.0, -wheel_side_shift); // translate to the back left
     wheelBL.drawWheel();
     glPopMatrix();
   }
@@ -126,6 +202,7 @@ void Car::drawTheWheels(){
   // back right wheel
   {
     glPushMatrix();
+    glRotatef(180, 0, 1, 0); // rotate the wheel to the opposite direction
     glTranslated(-back_axle_shift, 0.0, -wheel_side_shift); // translate to the back right
     wheelBR.drawWheel();
     glPopMatrix();
@@ -134,7 +211,7 @@ void Car::drawTheWheels(){
   // front left wheel
   {
     glPushMatrix();
-    glTranslated(front_axle_shift, 0.0, wheel_side_shift); // translate to the front left
+    glTranslated(front_axle_shift, 0.0, -wheel_side_shift); // translate to the front left
     wheelFL.drawWheel();
     glPopMatrix();
   }
@@ -142,6 +219,7 @@ void Car::drawTheWheels(){
   // front right wheel
   {
     glPushMatrix();
+    glRotatef(180, 0, 1, 0); // rotate the wheel to the opposite direction
     glTranslated(front_axle_shift, 0.0, -wheel_side_shift); // translate to the front right
     wheelFR.drawWheel();
     glPopMatrix();

@@ -11,7 +11,8 @@ using namespace std;
 
 class RearBumper{
   public:
-    GLubyte car_color[3]  = {0, 170, 0};  // car RGB color
+    GLubyte car_lines_color[3] = {0, 0, 0};  // car lines RGB color
+    GLubyte car_color[3] = {0, 0, 100};      // car RGB color
 
     RearBumper();
     ~RearBumper();

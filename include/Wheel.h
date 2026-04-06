@@ -1,5 +1,9 @@
 #pragma once
 #include <GL/glut.h>
+#include <vector>
+#include <array>
+
+#define RESOLUTION 30
 
 using namespace std;
 
