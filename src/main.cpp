@@ -38,6 +38,10 @@ Drum drum(4.3f, 0.0f, -4.5f, 0.5f, 1.5f);
 
 ma_engine audioEngine;
 ma_sound  bgMusic;
+ma_sound  hydraulicsSound;
+ma_sound  shakeSound;
+ma_sound  spraySound;
+int sprayTimerGen = 0;
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
@@ -72,6 +76,16 @@ void init(){
       ma_sound_set_looping(&bgMusic, MA_TRUE);
       ma_sound_start(&bgMusic);
     }
+    ma_sound_init_from_file(&audioEngine, "sounds/Hydraulics_00_MB_04.mp3",
+            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
+            NULL, NULL, &hydraulicsSound);
+    ma_sound_set_looping(&hydraulicsSound, MA_TRUE);
+    ma_sound_init_from_file(&audioEngine, "sounds/FE_MB_19.mp3",
+            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
+            NULL, NULL, &shakeSound);
+    ma_sound_init_from_file(&audioEngine, "sounds/FE_MB_16.mp3",
+            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
+            NULL, NULL, &spraySound);
   }
 
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
@@ -113,6 +127,12 @@ void reshape(int w, int h) {
   glMatrixMode(GL_MODELVIEW);
 }
 
+void playSpray(int gen) {
+    if (gen != sprayTimerGen) return;
+    ma_sound_seek_to_pcm_frame(&spraySound, 0);
+    ma_sound_start(&spraySound);
+}
+
 void keyboard(unsigned char key, int x, int y) {
   if(key == 27 /* ESC */){
     exit(0);
@@ -127,6 +147,17 @@ void keyboard(unsigned char key, int x, int y) {
       currentCarColor = (currentCarColor + 1) % (int)carBodyColors.size();
       const auto& c = carBodyColors[currentCarColor];
       carro.setBodyColor(c[0], c[1], c[2]);
+
+      ma_sound_stop(&spraySound);
+      ma_sound_stop(&shakeSound);
+      ma_sound_seek_to_pcm_frame(&shakeSound, 0);
+      ma_sound_start(&shakeSound);
+
+      ma_uint64 frames = 0;
+      ma_sound_get_length_in_pcm_frames(&shakeSound, &frames);
+      int shakeMs = (int)(frames * 1000 / ma_engine_get_sample_rate(&audioEngine));
+      sprayTimerGen++;
+      glutTimerFunc(shakeMs, playSpray, sprayTimerGen);
     }
 
     // manipulate camera
@@ -168,8 +199,12 @@ void keyboard(unsigned char key, int x, int y) {
 
 void mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON) {
-        mouseLeftDown = (state == GLUT_DOWN);
-        lastMouseX = x;
+      mouseLeftDown = (state == GLUT_DOWN);
+      lastMouseX = x;
+      if (state == GLUT_UP) {
+          ma_sound_stop(&hydraulicsSound);
+          ma_sound_seek_to_pcm_frame(&hydraulicsSound, 0);
+      }
     }
 }
 
@@ -178,6 +213,8 @@ void motion(int x, int y) {
         int dx = x - lastMouseX;
         lastMouseX = x;
         platform.addRotation(dx * 0.5f);
+        if (!ma_sound_is_playing(&hydraulicsSound))
+            ma_sound_start(&hydraulicsSound);
         glutPostRedisplay();
     }
 }
