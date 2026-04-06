@@ -41,6 +41,16 @@ meson compile -C build
 |-----|--------|
 | ESC | Quit   |
 | Left mouse drag | Rotate platform |
+| m | enable/disable camera movement |
+| a | rotate camera left |
+| d | rotate camera right |
+| w | bring the camera closer |
+| s | move the camera away |
+| space | move the camera up |
+| z | move the camera down |
+| p | change the car color |
+| l | enable/disable lamp |
+
 
 ## Todo
 
@@ -53,13 +63,56 @@ meson compile -C build
 - [X] Shelf and posters on the back wall
 - [X] Find better textures
 - [ ] Debug build mode with free camera movement
-- [ ] Add elements from each practical activity
+- [X] Add elements from each practical activity
 - [X] Simplified car
-- [ ] Lighting
+- [ ] Improve the modeling of the car
+- [ ] Add more cars
+- [ ] Add more parts to the car
+- [ ] Improve the wheels modeling with bump mapping
+- [X] Lighting
+- [ ] Improve lighting
+- [ ] Add neon lights in the cars
 - [ ] Implement bump mapping for the walls
 - [X] Add music and sound effects 
 - [ ] Add buttons interface
 - [ ] Improve music, sound effects and connect with the animations and interface
+
+
+## Main Problems Encountered
+
+- Difficulty in modeling the car by hand, including, finding the anchor points of splines and the control points
+- Difficulty in adjust the lighting, because it has to have the normal of objects, and we just use the GL_AUTO_NORMAL
+
+
+## Possible Future Improvements
+
+- Improve the model of the car, excluding all those straight curves, this can be done adjusting thoroughly the control points of the Bezier Surfaces.
+- Add some bump mapping in the wheels to create more realism in the tires.
+- Add more parts of the car, like, airfoil, rear view mirrors, diferent body kits, diferente rims, and etc. this can be done siting a lot of hours and modeling everything or tring to pull some done model.
+- Add lights in the car, like the headlights, tailights, arrows lights and neon lights under the car.
+- Improve the garage modeling, with more objects.
+- Improve the usability of the app with some buttons, to personalize the car, with a selector of colors, of diferent cars or diferent car parts.
+- Improve the music, adding more tracks, and some sound effects when something is clicked or selected.
+
+
+## Each Element from the Practice Activities
+
+First: We used double buffering with the glutSwapBuffers function instead of a single buffer with glFlush.
+Second: We modified the camera—its position and direction—using gluLookAt, adjusted the frustum to use perspective projection, and used pushMatrix and popMatrix functions for the internal operations performed.
+Third: We used the depth test to solve the visibility problem.
+Fourth: For shading, we used Gouraud Shading with glShadeModel(GL_SMOOTH), and implemented lighting with a default ambient light so the scene wouldn’t be completely dark, along with a point light placed above the garage to provide stronger illumination.
+Fifth: We used textures for the garage, applying them to the various objects used.
+Sixth: We modeled the entire car using splines and Bézier surfaces.
+
+
+## What each person done
+
+Gabriel Campelo: Modeled the garage, placing each object inside it, applied textures to these objects, made the platform rotate with the car, added the music, defined a color scheme, created a Meson build setup to compile the code, organized the GitHub repository, and fixed various bugs overall.
+
+Gabriel Sherterton: Modeled each part of the car, initially set up the project, helped structure the project architecture, parameterized the modeling, and added lighting.
+
+André Nóbrega: Was responsible for creating and integrating the game menu to customize the car and its components.
+
 
 ## References
 
