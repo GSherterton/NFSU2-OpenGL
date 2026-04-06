@@ -194,7 +194,7 @@ void Car::drawTheWheels(){
   // back left wheel
   {
     glPushMatrix();
-    glTranslated(-back_axle_shift, 0.0, wheel_side_shift); // translate to the back left
+    glTranslated(-back_axle_shift, 0.0, -wheel_side_shift); // translate to the back left
     wheelBL.drawWheel();
     glPopMatrix();
   }
@@ -202,6 +202,7 @@ void Car::drawTheWheels(){
   // back right wheel
   {
     glPushMatrix();
+    glRotatef(180, 0, 1, 0); // rotate the wheel to the opposite direction
     glTranslated(-back_axle_shift, 0.0, -wheel_side_shift); // translate to the back right
     wheelBR.drawWheel();
     glPopMatrix();
@@ -210,7 +211,7 @@ void Car::drawTheWheels(){
   // front left wheel
   {
     glPushMatrix();
-    glTranslated(front_axle_shift, 0.0, wheel_side_shift); // translate to the front left
+    glTranslated(front_axle_shift, 0.0, -wheel_side_shift); // translate to the front left
     wheelFL.drawWheel();
     glPopMatrix();
   }
@@ -218,6 +219,7 @@ void Car::drawTheWheels(){
   // front right wheel
   {
     glPushMatrix();
+    glRotatef(180, 0, 1, 0); // rotate the wheel to the opposite direction
     glTranslated(front_axle_shift, 0.0, -wheel_side_shift); // translate to the front right
     wheelFR.drawWheel();
     glPopMatrix();
