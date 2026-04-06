@@ -7,6 +7,8 @@
 #define COLOR_RED_SHADOW 0.40f, 0.04f, 0.04f
 #define COLOR_GREEN      0.0f, 1.0f, 0.0f
 #define COLOR_BLUE       0.0f, 0.0f, 1.0f
+#define COLOR_BLACK       0.08f, 0.08f, 0.08f
+#define COLOR_DARK_GRAY   0.18f, 0.18f, 0.18f
 
 // Car Colors (GLubyte)
 #define CAR_COLOR_BLUE     0,   0, 100

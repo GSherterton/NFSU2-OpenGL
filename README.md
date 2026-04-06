@@ -3,7 +3,7 @@
 Need For Speed Underground 2 garage recreation with OpenGL and GLUT.
 
 <p align="center">
-  <img src="docs/garage8.png" width="45%" alt="NFSU2 Garage - Overview">
+  <img src="docs/garage9.png" width="45%" alt="NFSU2 Garage - Overview">
 </p>
 <p align="center"><em>NFSU2 Garage - Overview</em></p>
 

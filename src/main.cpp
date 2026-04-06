@@ -16,13 +16,14 @@
 #include "Poster.h"
 #include "Shelf.h"
 #include "Car.h"
+#include "Drum.h"
 
 #define RESOLUTION 30
 #define PI 3.14159265
 #define THETA 20.0
 #define STEP 1.0
 
-Camera camera(0, 2.0, 8.0);
+Camera camera(0, 3.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
 Platform platform(3.0f, 0.2f);
 Shelf shelf(-4.5f, 0.0f, -4.97f, 1.2f, 2.5f, 0.5f);
@@ -30,6 +31,7 @@ Poster poster1(0.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Poster poster2(1.7f, 1.3f, -4.99f, 1.4f, 2.1f);
 Poster poster3(3.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Car carro;
+Drum drum(4.3f, 0.0f, -4.5f, 0.5f, 1.5f);
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
@@ -78,6 +80,7 @@ void display() {
     carro.drawCar();
   glPopMatrix();
   shelf.draw();
+  drum.draw();
   poster1.draw();
   poster2.draw();
   poster3.draw();
