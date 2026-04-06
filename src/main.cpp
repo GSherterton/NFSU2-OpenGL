@@ -3,6 +3,9 @@
  * and the m key to enable/disable the camera movement.
  */
 
+#define MINIAUDIO_IMPLEMENTATION
+#include "miniaudio.h"
+
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <math.h>
@@ -33,6 +36,9 @@ Poster poster3(3.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Car carro;
 Drum drum(4.3f, 0.0f, -4.5f, 0.5f, 1.5f);
 
+ma_engine audioEngine;
+ma_sound  bgMusic;
+
 bool mouseLeftDown = false;
 int lastMouseX = 0;
 bool move_camera = false;
@@ -58,6 +64,15 @@ void init(){
   glMapGrid2f(RESOLUTION, 0.0, 1.0, RESOLUTION, 0.0, 1.0);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+  if (ma_engine_init(NULL, &audioEngine) == MA_SUCCESS) {
+    if (ma_sound_init_from_file(&audioEngine, "sounds/musics/01. Snoop Dogg - Riders On The Storm (Fredwreck Remix).mp3",
+            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
+            NULL, NULL, &bgMusic) == MA_SUCCESS) {
+      ma_sound_set_looping(&bgMusic, MA_TRUE);
+      ma_sound_start(&bgMusic);
+    }
+  }
 
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
   platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side2.jpg");
