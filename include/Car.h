@@ -65,6 +65,10 @@ class Car{
     GLfloat front_bumper_begin_x = front_axle_shift + (new_radius * cos(45.0*PI/180)); // the x coordinate of the beginning of the front bumper
     // windshield
     GLfloat windshield_shift   = 0.5; // the shift of the windshield
+    // lights
+    GLfloat tailight_width = 0.6; // the width of the tailight
+    GLfloat frontlight_width = 0.8; // the width of the frontlight
+    GLfloat frontlight_arrow_width = 0.2; // the width of the arrow of the frontlight
     
     // vertical up shifts
     GLfloat up_shift = 0.7;  // the shift of the radius of the tires
@@ -76,6 +80,10 @@ class Car{
     GLfloat rear_bumper_begin_y = up_shift + sqrt((3*(new_radius)*(new_radius))/4); // the y coordinate of the beginning of the rear bumper
     GLfloat front_bumper_begin_y = up_shift + (new_radius * sin(45.0*PI/180)); // the y coordinate of the beginning of the front bumper
     GLfloat bumper_elevation_shift = 0.1; // the elevation shift of the bumpers
+    // lights
+    GLfloat tailight_bot_y = rear_bumper_begin_y + 2*fender_shift; // the y coordinate of the bottom of the tailight
+    GLfloat tailight_top_y = tailight_bot_y + 0.4; // the y coordinate of the top of the tailight (the bottom plus the height of the tailight)
+    GLfloat tailight_divider = tailight_bot_y + 0.15;
 
 
     void setParameters();

@@ -43,6 +43,10 @@ void Car::setParameters(){
     chassis.windshield_shift   = windshield_shift; // the shift of the windshield
     //doors
     chassis.back_line_shift = back_line_shift; // the back of the door shift from the center of the car
+    // lights
+    chassis.tailight_width = tailight_width; // the width of the tailight
+    chassis.frontlight_width = frontlight_width; // the width of the frontlight
+    chassis.frontlight_arrow_width = frontlight_arrow_width; // the width of the arrow of the frontlight
 
     // vertical up shifts
     chassis.up_shift = up_shift; // the shift of the radius of the tires
@@ -53,6 +57,10 @@ void Car::setParameters(){
     chassis.car_front_bumper = car_front_bumper; // the height of the car bumpers
     chassis.rear_bumper_begin_y = rear_bumper_begin_y; // the y coordinate of the beginning of the rear bumper
     chassis.front_bumper_begin_y = front_bumper_begin_y; // the y coordinate of the beginning of the front bumper
+    // lights
+    chassis.tailight_bot_y = tailight_bot_y; // the y coordinate of the bottom of the tailight
+    chassis.tailight_top_y = tailight_top_y; // the y coordinate of the top of the tailight (the bottom plus the height of the tailight)
+    chassis.tailight_divider = tailight_divider;
   }
 
   { // set doors vars

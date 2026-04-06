@@ -274,6 +274,7 @@ void Chassis::drawChassis(){
         //   {windshield_shift                  , car_roof     , side_shift},
         // }},
       }},
+     
       {{ // trunk top (back - front)
         {{ // left side
           {-back_axle_shift-(tire_radius+fender_shift)                  , car_rear_bumper, -side_shift},
@@ -300,32 +301,243 @@ void Chassis::drawChassis(){
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
         }},
       }},
-      {{ // trunk back (down - up)
+      {{ // trunk back bottom (down - up)
         {{ // left side
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, -side_shift},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , -side_shift},
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, -side_shift},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , -side_shift},
         }},
         {{
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, -side_shift/2},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , -side_shift/2},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , -side_shift/2},
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, -side_shift/2},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , -side_shift/2},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , -side_shift/2},
         }},
         {{
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, side_shift/2},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , side_shift/2},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , side_shift/2},
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, side_shift/2},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , side_shift/2},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , side_shift/2},
         }},
         {{ // right side
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, side_shift},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , side_shift},
           {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), rear_bumper_begin_y, side_shift},
-          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper    , side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y     , side_shift},
         }},
       }},
+      {{ // trunk back mid (down - up)
+        {{ // left side
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, -side_shift+tailight_width},
+        }},
+        {{
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, -side_shift+tailight_width},
+        }},
+        {{
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, side_shift-tailight_width},
+        }},
+        {{ // right side
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y, side_shift-tailight_width},
+        }},
+      }},
+      {{ // trunk back to (down - up)
+        {{ // left side
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , -side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
+        }},
+        {{ // right side
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), tailight_top_y , side_shift},
+          {-back_axle_shift-(tire_radius+fender_shift+rear_bumper_shift), car_rear_bumper, side_shift},
+        }},
+      }},
+      
+      {{ // tailligth box left 1 (down - up)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y, -side_shift+tailight_width},
+        }},
+      }},
+      {{ // tailligth box left 2 (back - front)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, -side_shift},
+        }},
+      }},
+      {{ // tailligth box left 3 (back - front)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, -side_shift},
+        }},
+      }},
+
+      {{ // tailligth box right 1 (down - up)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y, side_shift-tailight_width},
+        }},
+      }},
+      {{ // tailligth box right 2 (back - front)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_bot_y, side_shift},
+        }},
+      }},
+      {{ // tailligth box right 3 (back - front)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift)               , tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift)+tailight_width, tailight_top_y, side_shift},
+        }},
+      }},
+
       {{ // hood (back - front)
         {{ // left side
           {front_axle_shift-(tire_radius+fender_shift)                   , car_hood        , -side_shift},
@@ -354,28 +566,28 @@ void Chassis::drawChassis(){
       }},
       {{ // front (down - up)
         {{ // left side
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
         }},
         {{
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift/2},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift/2},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift/2},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift/2},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
         }},
         {{
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift/2},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift/2},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift/2},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift/2},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
         }},
         {{ // right side
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift},
-          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
         }},
       }},
       
@@ -755,7 +967,323 @@ void Chassis::drawChassis(){
       // glEvalMesh2(GL_LINE, 0, RESOLUTION, 0, RESOLUTION);
       glEvalMesh2(GL_FILL, 0, RESOLUTION, 0, RESOLUTION);
     }
+
+    // define the points of the brake lights surfaces
+    glColor4ub (255, 0, 0, 150);
   
+    vector<array<array<array<GLfloat, 3>, 4>, 4>> brake_lights_ctrlpoints = {
+      {{ // left brake light (down - up)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift+tailight_width},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , -side_shift+tailight_width},
+        }},
+      }},
+      {{ // right brake light (down - up)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift-tailight_width},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_top_y  , side_shift-tailight_width},
+        }},
+      }},
+    };
+
+    for(int i = 0; i < brake_lights_ctrlpoints.size(); i++){
+      glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4,
+            0, 1, 12, 4, &brake_lights_ctrlpoints[i][0][0][0]);
+
+      // glEvalMesh2(GL_LINE, 0, RESOLUTION, 0, RESOLUTION);
+      glEvalMesh2(GL_FILL, 0, RESOLUTION, 0, RESOLUTION);
+    }
+
+    // define the points of the arrows lights surfaces
+    glColor4ub (255, 110, 0, 200); // orange color for the arrows lights
+  
+    vector<array<array<array<GLfloat, 3>, 4>, 4>> arrows_lights_ctrlpoints = {
+      {{ // rear left arrow light (down - up)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+        }},
+      }},
+      {{ // rear right arrow light (down - up)
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+        }},
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+        }},
+      }},
+      {{ // front left arrow light (down - up)
+        {{ // left side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+        }},
+        {{ // right side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+        }},
+      }},
+      {{ // front right arrow light (down - up)
+        {{ // right side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+        }},
+        {{ // left side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+        }},
+      }},
+    };
+
+    for(int i = 0; i < arrows_lights_ctrlpoints.size(); i++){
+      glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4,
+            0, 1, 12, 4, &arrows_lights_ctrlpoints[i][0][0][0]);
+
+      // glEvalMesh2(GL_LINE, 0, RESOLUTION, 0, RESOLUTION);
+      glEvalMesh2(GL_FILL, 0, RESOLUTION, 0, RESOLUTION);
+    }
+
+    // define the points of the reverse lights surfaces
+    glColor4ub (255, 255, 255, 150); // white color for the reverse lights
+  
+    vector<array<array<array<GLfloat, 3>, 4>, 4>> reverse_lights_ctrlpoints = {
+      {{ // rear left reverse light (down - up)
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width/2},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+        }},
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , -side_shift+tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, -side_shift+tailight_width},
+        }},
+      }},
+      {{ // rear right reverse light (down - up)
+        {{ // right side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width/2},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width/2},
+        }},
+        {{
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+        }},
+        {{ // left side
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_bot_y  , side_shift-tailight_width},
+          {-back_axle_shift-(new_radius+rear_bumper_shift), tailight_divider, side_shift-tailight_width},
+        }},
+      }},
+    };
+
+    for(int i = 0; i < reverse_lights_ctrlpoints.size(); i++){
+      glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4,
+            0, 1, 12, 4, &reverse_lights_ctrlpoints[i][0][0][0]);
+
+      // glEvalMesh2(GL_LINE, 0, RESOLUTION, 0, RESOLUTION);
+      glEvalMesh2(GL_FILL, 0, RESOLUTION, 0, RESOLUTION);
+    }
+
+    // define the points of the headlight surfaces
+    glColor4ub (255, 255, 150, 200); // white color for the headlight
+  
+    vector<array<array<array<GLfloat, 3>, 4>, 4>> headlight_ctrlpoints = {
+      {{ // left headlight (down - up)
+        {{ // left side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_arrow_width},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
+        }},
+        {{ // right side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, -side_shift+frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , -side_shift+frontlight_width},
+        }},
+      }},
+      {{ // right headlight (down - up)
+        {{ // right side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_arrow_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_arrow_width},
+        }},
+        {{
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
+        }},
+        {{ // left side
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), front_bumper_begin_y, side_shift-frontlight_width},
+          {front_axle_shift+(tire_radius+fender_shift+front_bumper_shift), car_front_bumper    , side_shift-frontlight_width},
+        }},
+      }},
+    };
+
+    for(int i = 0; i < headlight_ctrlpoints.size(); i++){
+      glMap2f(GL_MAP2_VERTEX_3, 0, 1, 3, 4,
+            0, 1, 12, 4, &headlight_ctrlpoints[i][0][0][0]);
+
+      // glEvalMesh2(GL_LINE, 0, RESOLUTION, 0, RESOLUTION);
+      glEvalMesh2(GL_FILL, 0, RESOLUTION, 0, RESOLUTION);
+    }
+
     glColor4ubv (car_window_color); // paints the car
 
     // define the points of the windows surfaces

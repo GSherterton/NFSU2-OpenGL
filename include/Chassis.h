@@ -42,14 +42,22 @@ class Chassis{
     GLfloat windshield_shift   = 0.5; // the shift of the windshield
     //doors
     GLfloat back_line_shift = tire_radius+fender_shift; // the back of the door shift from the center of the car
+    // lights
+    GLfloat tailight_width = 0.6; // the width of the tailight
+    GLfloat frontlight_width = 0.8; // the width of the frontlight
+    GLfloat frontlight_arrow_width = 0.2; // the width of the arrow of the frontlight
     
     // vertical up shifts
     GLfloat up_shift = 0.7;  // the shift of the radius of the tires
-    GLfloat car_hood         = up_shift + tire_radius + 0.7;  // the height of the car hood
-    GLfloat car_roof   = up_shift + tire_radius + 0.9 + 0.7;  // the height of the car roof
+    GLfloat car_hood = up_shift + tire_radius + 0.7;        // the height of the car hood
+    GLfloat car_roof = up_shift + tire_radius + 0.9 + 0.7;  // the height of the car roof
     //bumpers
     GLfloat car_rear_bumper  = up_shift + tire_radius + 0.9;  // the height of the car bumpers
     GLfloat car_front_bumper = up_shift + tire_radius + 0.35; // the height of the car bumpers
     GLfloat rear_bumper_begin_y = up_shift + sqrt((3*(new_radius)*(new_radius))/4); // the y coordinate of the beginning of the rear bumper
     GLfloat front_bumper_begin_y = up_shift + (new_radius * sin(45.0*PI/180)); // the y coordinate of the beginning of the front bumper
+    // lights
+    GLfloat tailight_bot_y = rear_bumper_begin_y + 2*fender_shift; // the y coordinate of the bottom of the tailight
+    GLfloat tailight_top_y = tailight_bot_y + 0.4; // the y coordinate of the top of the tailight (the bottom plus the height of the tailight)
+    GLfloat tailight_divider = tailight_bot_y + 0.15;
 };
