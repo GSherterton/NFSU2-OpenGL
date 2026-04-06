@@ -51,6 +51,7 @@ void init(){
   poster1.loadTexture("textures/poster1.jpg");
   poster2.loadTexture("textures/poster2.jpg");
   poster3.loadTexture("textures/poster3.jpg");
+  menu_interface.init();
 }
 
 void display() {
