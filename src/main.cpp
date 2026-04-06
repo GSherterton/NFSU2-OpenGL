@@ -28,6 +28,7 @@
 #define THETA 20.0
 #define STEP 1.0
 
+// instanciate used objects
 Camera camera(0, 3.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
 Platform platform(3.0f, 0.2f);
@@ -46,6 +47,7 @@ bool mouseLeftDown = false;
 int lastMouseX = 0;
 bool move_camera = false;
 
+// some default colors for the car
 const std::vector<std::array<GLubyte, 3>> carBodyColors = {
     {CAR_COLOR_BLUE},
     {CAR_COLOR_RED},
@@ -65,9 +67,11 @@ void init(){
   // enable evaluators for the car body
   glEnable(GL_MAP1_VERTEX_3);
   glEnable(GL_MAP2_VERTEX_3);
+  glMapGrid2f(RESOLUTION, 0.0, 1.0, RESOLUTION, 0.0, 1.0);
+
+  // enable automatic normal generation and normalization
   glEnable(GL_AUTO_NORMAL);
   glEnable(GL_NORMALIZE);
-  glMapGrid2f(RESOLUTION, 0.0, 1.0, RESOLUTION, 0.0, 1.0);
 
   // enable blending for transparent textures
   glEnable(GL_BLEND);
@@ -80,7 +84,7 @@ void init(){
   GLfloat globalAmbient[] = {0.2, 0.2, 0.2, 1.0};
   glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
   
-
+  // initialize audio
   if (ma_engine_init(NULL, &audioEngine) == MA_SUCCESS) {
     if (ma_sound_init_from_file(&audioEngine, "sounds/musics/01. Snoop Dogg - Riders On The Storm (Fredwreck Remix).mp3",
             MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
@@ -90,6 +94,7 @@ void init(){
     }
   }
 
+  // load textures
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
   platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side2.jpg");
   poster1.loadTexture("textures/poster1.jpg");
@@ -97,7 +102,7 @@ void init(){
   poster3.loadTexture("textures/poster3.jpg");
 }
 
-void display() {
+void display() { // our pipeline to draw the scene
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glLoadIdentity();
