@@ -21,6 +21,7 @@
 #include "Shelf.h"
 #include "Car.h"
 #include "Drum.h"
+#include "Lamp.h"
 
 #define RESOLUTION 30
 #define PI 3.14159265
@@ -36,6 +37,7 @@ Poster poster2(1.7f, 1.3f, -4.99f, 1.4f, 2.1f);
 Poster poster3(3.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Car carro;
 Drum drum(4.3f, 0.0f, -4.5f, 0.5f, 1.5f);
+Lamp lamp(0.0f, 3.9f, 0.0f);
 
 ma_engine audioEngine;
 ma_sound  bgMusic;
@@ -59,12 +61,25 @@ void init(){
   glShadeModel (GL_SMOOTH); // select gouraud shading
 
   glEnable(GL_DEPTH_TEST); // enable depth test
+
+  // enable evaluators for the car body
   glEnable(GL_MAP1_VERTEX_3);
   glEnable(GL_MAP2_VERTEX_3);
   glEnable(GL_AUTO_NORMAL);
+  glEnable(GL_NORMALIZE);
   glMapGrid2f(RESOLUTION, 0.0, 1.0, RESOLUTION, 0.0, 1.0);
+
+  // enable blending for transparent textures
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+  // enable lighting and set the ambient ilumination
+  glEnable(GL_LIGHTING);
+  glEnable(GL_COLOR_MATERIAL);
+  glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+  GLfloat globalAmbient[] = {0.2, 0.2, 0.2, 1.0};
+  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
+  
 
   if (ma_engine_init(NULL, &audioEngine) == MA_SUCCESS) {
     if (ma_sound_init_from_file(&audioEngine, "sounds/musics/01. Snoop Dogg - Riders On The Storm (Fredwreck Remix).mp3",
@@ -100,6 +115,7 @@ void display() {
   poster1.draw();
   poster2.draw();
   poster3.draw();
+  lamp.drawLamp();
 
   glutSwapBuffers();
 }
@@ -163,6 +179,11 @@ void keyboard(unsigned char key, int x, int y) {
       }
     }
   
+    // enable lamp
+    if(key == 'l'){
+      lamp.enabled = !lamp.enabled;
+    }
+
     glutPostRedisplay();
   }
 }
