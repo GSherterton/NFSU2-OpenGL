@@ -1,6 +1,7 @@
 /*
  * Also the cameras moves with w, a, s, d, space and z keys.
  * and the m key to enable/disable the camera movement.
+ * and the p key to change the car body color.
  */
 
 #define MINIAUDIO_IMPLEMENTATION
