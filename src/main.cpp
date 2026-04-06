@@ -14,6 +14,7 @@
 #include "Shelf.h"
 #include "Car.h"
 
+#define RESOLUTION 30
 #define PI 3.14159265
 #define THETA 20.0
 #define STEP 1.0
@@ -37,6 +38,11 @@ void init(){
 
   glEnable(GL_DEPTH_TEST); // enable depth test
   glEnable(GL_MAP1_VERTEX_3);
+  glEnable(GL_MAP2_VERTEX_3);
+  glEnable(GL_AUTO_NORMAL);
+  glMapGrid2f(RESOLUTION, 0.0, 1.0, RESOLUTION, 0.0, 1.0);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
   platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side2.jpg");
@@ -73,7 +79,7 @@ void reshape(int w, int h) {
 
   gluPerspective(45.0, (GLfloat) w/(GLfloat) h, 1.0, 30.0);
 
-    glMatrixMode(GL_MODELVIEW);
+  glMatrixMode(GL_MODELVIEW);
 }
 
 void keyboard(unsigned char key, int x, int y) {

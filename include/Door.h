@@ -9,7 +9,9 @@ using namespace std;
 
 class Door{
   public:
-    GLubyte car_color[3]  = {0, 170, 0};  // car RGB color
+    GLubyte car_lines_color[3]  = {0, 0, 0};       // car lines RGB color
+    GLubyte car_color[3]  = {0, 0, 100};           // car RGB color
+    GLubyte car_window_color[4]  = {20, 20, 50, 250}; // car window RGB color
 
     Door();
     ~Door();
