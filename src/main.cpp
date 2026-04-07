@@ -20,12 +20,9 @@
 #include "Poster.h"
 #include "Shelf.h"
 #include "Car.h"
-<<<<<<< HEAD
 #include "Menu.h"
-=======
 #include "Drum.h"
 #include "Lamp.h"
->>>>>>> f084926dc3e9ee469d8172f86dfa22821f487ec0
 
 #define RESOLUTION 30
 #define PI 3.14159265
@@ -106,6 +103,7 @@ void init(){
   poster2.loadTexture("textures/poster2.jpg");
   poster3.loadTexture("textures/poster3.jpg");
   menu_interface.init();
+  menu_interface.setAvailableColors(carBodyColors);
 }
 
 void display() { // our pipeline to draw the scene
@@ -126,11 +124,8 @@ void display() { // our pipeline to draw the scene
   poster1.draw();
   poster2.draw();
   poster3.draw();
-<<<<<<< HEAD
   menu_interface.drawMenu(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
-=======
   lamp.drawLamp();
->>>>>>> f084926dc3e9ee469d8172f86dfa22821f487ec0
 
   glutSwapBuffers();
 }
@@ -159,6 +154,8 @@ void keyboard(unsigned char key, int x, int y) {
       currentCarColor = (currentCarColor + 1) % (int)carBodyColors.size();
       const auto& c = carBodyColors[currentCarColor];
       carro.setBodyColor(c[0], c[1], c[2]);
+
+      menu_interface.selected_color_index = currentCarColor;
     }
 
     // manipulate camera
