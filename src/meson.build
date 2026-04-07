@@ -35,6 +35,8 @@ sources = [
   'RearBumper.cpp',
   'FrontBumper.cpp',
   'Menu.cpp',
+  'Drum.cpp',
+  'Lamp.cpp',
 ]
 
 # Executable

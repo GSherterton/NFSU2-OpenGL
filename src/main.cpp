@@ -1,26 +1,39 @@
 /*
  * Also the cameras moves with w, a, s, d, space and z keys.
  * and the m key to enable/disable the camera movement.
+ * and the p key to change the car body color.
  */
+
+#define MINIAUDIO_IMPLEMENTATION
+#include "miniaudio.h"
 
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <math.h>
+#include <vector>
+#include <array>
 
 #include "Camera.h"
+#include "Colors.h"
 #include "Garage.h"
 #include "Platform.h"
 #include "Poster.h"
 #include "Shelf.h"
 #include "Car.h"
+<<<<<<< HEAD
 #include "Menu.h"
+=======
+#include "Drum.h"
+#include "Lamp.h"
+>>>>>>> f084926dc3e9ee469d8172f86dfa22821f487ec0
 
 #define RESOLUTION 30
 #define PI 3.14159265
 #define THETA 20.0
 #define STEP 1.0
 
-Camera camera(0, 2.0, 8.0);
+// instanciate used objects
+Camera camera(0, 3.0, 8.0);
 Garage garage(5.0f, 5.0f, 4.0f);
 Platform platform(3.0f, 0.2f);
 Shelf shelf(-4.5f, 0.0f, -4.97f, 1.2f, 2.5f, 0.5f);
@@ -29,23 +42,64 @@ Poster poster2(1.7f, 1.3f, -4.99f, 1.4f, 2.1f);
 Poster poster3(3.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Car carro;
 Menu menu_interface;
+Drum drum(4.3f, 0.0f, -4.5f, 0.5f, 1.5f);
+Lamp lamp(0.0f, 3.9f, 0.0f);
+
+ma_engine audioEngine;
+ma_sound  bgMusic;
 
 bool mouseLeftDown = false;
 int lastMouseX = 0;
 bool move_camera = false;
+
+// some default colors for the car
+const std::vector<std::array<GLubyte, 3>> carBodyColors = {
+    {CAR_COLOR_BLUE},
+    {CAR_COLOR_RED},
+    {CAR_COLOR_GREEN},
+    {CAR_COLOR_WHITE},
+    {CAR_COLOR_ORANGE},
+    {CAR_COLOR_BLACK},
+};
+int currentCarColor = 0;
 
 void init(){
   glClearColor (1.0, 1.0, 1.0, 0.0);
   glShadeModel (GL_SMOOTH); // select gouraud shading
 
   glEnable(GL_DEPTH_TEST); // enable depth test
+
+  // enable evaluators for the car body
   glEnable(GL_MAP1_VERTEX_3);
   glEnable(GL_MAP2_VERTEX_3);
-  glEnable(GL_AUTO_NORMAL);
   glMapGrid2f(RESOLUTION, 0.0, 1.0, RESOLUTION, 0.0, 1.0);
+
+  // enable automatic normal generation and normalization
+  glEnable(GL_AUTO_NORMAL);
+  glEnable(GL_NORMALIZE);
+
+  // enable blending for transparent textures
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+  // enable lighting and set the ambient ilumination
+  glEnable(GL_LIGHTING);
+  glEnable(GL_COLOR_MATERIAL);
+  glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+  GLfloat globalAmbient[] = {0.2, 0.2, 0.2, 1.0};
+  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
+  
+  // initialize audio
+  if (ma_engine_init(NULL, &audioEngine) == MA_SUCCESS) {
+    if (ma_sound_init_from_file(&audioEngine, "sounds/musics/01. Snoop Dogg - Riders On The Storm (Fredwreck Remix).mp3",
+            MA_SOUND_FLAG_DECODE | MA_SOUND_FLAG_ASYNC,
+            NULL, NULL, &bgMusic) == MA_SUCCESS) {
+      ma_sound_set_looping(&bgMusic, MA_TRUE);
+      ma_sound_start(&bgMusic);
+    }
+  }
+
+  // load textures
   garage.loadTextures("textures/wall2.png", "textures/floor2.png", "textures/ceiling2.jpg");
   platform.loadTextures("textures/plataform_disc.jpg", "textures/platform_side2.jpg");
   poster1.loadTexture("textures/poster1.jpg");
@@ -54,7 +108,7 @@ void init(){
   menu_interface.init();
 }
 
-void display() {
+void display() { // our pipeline to draw the scene
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glLoadIdentity();
@@ -68,10 +122,15 @@ void display() {
     carro.drawCar();
   glPopMatrix();
   shelf.draw();
+  drum.draw();
   poster1.draw();
   poster2.draw();
   poster3.draw();
+<<<<<<< HEAD
   menu_interface.drawMenu(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+=======
+  lamp.drawLamp();
+>>>>>>> f084926dc3e9ee469d8172f86dfa22821f487ec0
 
   glutSwapBuffers();
 }
@@ -93,6 +152,13 @@ void keyboard(unsigned char key, int x, int y) {
     // abilitates the camera movement
     if(key == 'm'){
       move_camera = !move_camera;
+    }
+
+    // cycle car body color
+    if(key == 'p'){
+      currentCarColor = (currentCarColor + 1) % (int)carBodyColors.size();
+      const auto& c = carBodyColors[currentCarColor];
+      carro.setBodyColor(c[0], c[1], c[2]);
     }
 
     // manipulate camera
@@ -128,6 +194,11 @@ void keyboard(unsigned char key, int x, int y) {
       }
     }
   
+    // enable lamp
+    if(key == 'l'){
+      lamp.enabled = !lamp.enabled;
+    }
+
     glutPostRedisplay();
   }
 }
