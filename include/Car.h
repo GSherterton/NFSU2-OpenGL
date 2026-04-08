@@ -37,6 +37,7 @@ class Car{
     void drawChassis();
     void drawDoors();
     void drawBumpers();
+    void drawNeon();
 
     // parameters vars
     // colors

@@ -135,7 +135,7 @@ void Menu::drawTopPanel() {
   glEnd();
   glLineWidth(1.0f);
 
-  // === LADO ESQUERDO: LOGO E NOME DO CARRO ===
+  //  LADO ESQUERDO: LOGO E NOME DO CARRO 
   float aspect_ratio = 3840.0f / 2160.0f; 
   float logo_height = 75.0f;
   float logo_width = logo_height * aspect_ratio; 
@@ -186,7 +186,7 @@ void Menu::drawTopPanel() {
   drawStrokeText(car_brand, text_x, top_y + 65.0f, 0.32f, 3.0f);
   drawStrokeText(car_model, text_x, top_y + 105.0f, 0.25f, 2.0f);
 
-  // === LADO DIREITO: COMANDOS ===
+  //  LADO DIREITO: COMANDOS 
   float right_x = (window_width - margin) - 250.0f; 
   void* font_title = GLUT_BITMAP_HELVETICA_18;
   void* font_cmd = GLUT_BITMAP_HELVETICA_12;
@@ -195,16 +195,14 @@ void Menu::drawTopPanel() {
   drawText("[ P ] - CHANGE COLOR", right_x, top_y + 80.0f, font_cmd);
   drawText("[ L ] - ENABLE/DISABLE LAMP", right_x, top_y + 105.0f, font_cmd);
 
-  // === CENTRO/DIREITA: PALETA DE CORES ===
   // Calcula o tamanho total das bolinhas para posicionar antes dos comandos
   float spacing = 35.0f;
   float total_palette_width = (available_colors.size() > 0) ? (available_colors.size() - 1) * spacing : 0;
   
-  // Afasta 80px para a esquerda do bloco de comandos
   float palette_start_x = right_x - total_palette_width - 80.0f; 
   
   drawText("COLORS", palette_start_x, top_y + 45.0f, font_title);
-  // Posiciona as bolinhas alinhadas na mesma altura do primeiro comando "[ P ]"
+
   drawColorPalette(palette_start_x + 10.0f, top_y + 76.0f); 
 }
 
@@ -235,7 +233,7 @@ void Menu::drawBottomPanel() {
   float title_width = 150.0f; 
   drawText("Performance Stats", (window_width / 2.0f) - (title_width / 2.0f), top_y + 25.0f, GLUT_BITMAP_HELVETICA_18);
 
-  // === BARRAS DE PERFORMANCE ===
+  //  BARRAS DE PERFORMANCE 
   float panel_width = (window_width - margin * 2);
   float padding_externo = 40.0f; 
   float padding_entre_barras = 40.0f; 
