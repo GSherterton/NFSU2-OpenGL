@@ -127,19 +127,25 @@ void display() { // our pipeline to draw the scene
   camera.setTarget(0.0, 1.5, 0.0); // look at the vertical center of the garage
   camera.setLookAt();
 
+  lamp.setupLampLight();
+
   garage.draw();
   glPushMatrix();
     glRotatef(platform.getRotation(), 0.0f, 1.0f, 0.0f);
     platform.draw();
     carro.drawCar();
   glPopMatrix();
+
   shelf.draw();
   drum.draw();
+
   poster1.draw();
   poster2.draw();
   poster3.draw();
-  menu_interface.drawMenu(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+
   lamp.drawLamp();
+  
+  menu_interface.drawMenu(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
 
   glutSwapBuffers();
 }
