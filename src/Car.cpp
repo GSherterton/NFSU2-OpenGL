@@ -278,6 +278,40 @@ void Car::setBodyColor(GLubyte r, GLubyte g, GLubyte b) {
     setParameters();
 }
 
+void Car::drawNeon() {
+    glPushAttrib(GL_ENABLE_BIT | GL_LIGHTING_BIT | GL_DEPTH_BUFFER_BIT); 
+    
+    glDisable(GL_TEXTURE_2D); 
+    glDisable(GL_LIGHTING);   
+    glEnable(GL_BLEND);       
+    
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+    
+    glDepthMask(GL_FALSE);  
+
+    float length = 4.2f; 
+    float width = 2.0f;
+    
+    float y_pos = 0.02f; 
+
+    glBegin(GL_TRIANGLE_FAN);
+        glColor4ub(car_color[0], car_color[1], car_color[2], 170);
+        glVertex3f(0.0f, y_pos, 0.0f);
+
+        glColor4ub(car_color[0], car_color[1], car_color[2], 0);
+        
+        glVertex3f(-length, y_pos, -width);
+        glVertex3f( length, y_pos, -width);
+        glVertex3f( length, y_pos,  width);
+        glVertex3f(-length, y_pos,  width);
+        glVertex3f(-length, y_pos, -width); 
+    glEnd();
+
+    glDepthMask(GL_TRUE);
+
+    glPopAttrib(); 
+}
+
 void Car::drawCar() {
   glPushMatrix(); // put everything that will be drawed into a new transf matrix
 
@@ -289,6 +323,8 @@ void Car::drawCar() {
   drawChassis();
   drawDoors();
   drawBumpers();
+
+  drawNeon();
 
   glPopMatrix(); // pop the matrix to return to the previous one
 }

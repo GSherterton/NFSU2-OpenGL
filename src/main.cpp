@@ -20,6 +20,7 @@
 #include "Poster.h"
 #include "Shelf.h"
 #include "Car.h"
+#include "Menu.h"
 #include "Drum.h"
 #include "Lamp.h"
 
@@ -37,6 +38,7 @@ Poster poster1(0.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Poster poster2(1.7f, 1.3f, -4.99f, 1.4f, 2.1f);
 Poster poster3(3.2f, 1.3f, -4.99f, 1.4f, 2.1f);
 Car carro;
+Menu menu_interface;
 Drum drum(4.3f, 0.0f, -4.5f, 0.5f, 1.5f);
 Lamp lamp(0.0f, 3.9f, 0.0f);
 
@@ -100,6 +102,8 @@ void init(){
   poster1.loadTexture("textures/poster1.jpg");
   poster2.loadTexture("textures/poster2.jpg");
   poster3.loadTexture("textures/poster3.jpg");
+  menu_interface.init();
+  menu_interface.setAvailableColors(carBodyColors);
 }
 
 void display() { // our pipeline to draw the scene
@@ -120,6 +124,7 @@ void display() { // our pipeline to draw the scene
   poster1.draw();
   poster2.draw();
   poster3.draw();
+  menu_interface.drawMenu(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
   lamp.drawLamp();
 
   glutSwapBuffers();
@@ -149,6 +154,8 @@ void keyboard(unsigned char key, int x, int y) {
       currentCarColor = (currentCarColor + 1) % (int)carBodyColors.size();
       const auto& c = carBodyColors[currentCarColor];
       carro.setBodyColor(c[0], c[1], c[2]);
+
+      menu_interface.selected_color_index = currentCarColor;
     }
 
     // manipulate camera
